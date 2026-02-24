@@ -63,7 +63,7 @@ Identify weak signals and early indicators of potential futures—developments t
 
 **Source Content:**
 - Executive Summary (emerging patterns, counterintuitive findings) - Baseline context
-- **Trends "Watch" column (primary)** - Loaded via `scripts/load-trends.sh` with filter `"all"`, filtered to urgency="Watch"
+- **Trends "Watch" column (primary)** - Loaded from `content_map.trend_entities` (11-trends/data/), filtered to urgency="Watch"
 - Dimension syntheses (early-stage developments) - NOT loaded (redundant with Executive Summary)
 - Cross-Dimensional Patterns (non-obvious connections) - Preview only (first 200 words)
 
@@ -105,7 +105,7 @@ Construct 2-3 plausible alternative future scenarios based on how identified sig
 
 **Source Content:**
 - Trends (potential trajectories) - Already loaded in Step 3b (all columns)
-- **Megatrends (macro drivers)** - Loaded via `scripts/load-megatrends.sh`
+- **Megatrends (macro drivers)** - Loaded from `content_map.megatrend_entities` (06-megatrends/data/)
 - Cross-Dimensional Patterns (scenario drivers) - Preview only (first 200 words)
 - Executive Summary (future implications) - Baseline context
 

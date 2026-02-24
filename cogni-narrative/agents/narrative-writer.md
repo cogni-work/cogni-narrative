@@ -52,13 +52,17 @@ When invoked, you will receive parameters specifying:
 - `arc_id` (optional) -- which story arc to use
 - `language` (optional) -- `en` or `de`
 - `output_path` (optional) -- where to write the result
+- `project_path` (optional) -- full research project directory (parent of entity dirs)
+- `research_question` (optional) -- original research question for narrative framing
+- `content_map` (optional) -- YAML map of content category keys to file/directory paths for additional entity context (trends, megatrends, domain concepts, etc.)
 
 ## Execution
 
 1. Load the `cogni-narrative:narrative` skill using the Skill tool
-2. Follow the skill's complete 6-phase workflow
-3. Do NOT ask user questions during execution -- use auto-detection for arc selection if `arc_id` is not provided
-4. Write the output file and return a JSON summary
+2. When `content_map` is provided, pass `project_path`, `research_question`, and `content_map` through to the narrative skill as additional parameters
+3. Follow the skill's complete 6-phase workflow
+4. Do NOT ask user questions during execution -- use auto-detection for arc selection if `arc_id` is not provided
+5. Write the output file and return a JSON summary
 
 ## Output
 

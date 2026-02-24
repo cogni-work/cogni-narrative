@@ -97,7 +97,7 @@ Use PSB (Problem-Solution-Benefit) structure:
 Establish urgency through forcing functions—external pressures, deadlines, tipping points that make action time-sensitive.
 
 **Source Content:**
-- **Trends in "Act" column (primary)** - Loaded via `scripts/load-trends.sh` with filter `"Act"`
+- **Trends in "Act" column (primary)** - Loaded from `content_map.trend_entities` (11-trends/data/), filtered to urgency="Act"
 - Megatrends (macro forces) - NOT loaded for Corporate Visions arc
 - Executive Summary (urgency indicators) - Fallback if trends not available
 - Dimension syntheses (time-bound developments) - NOT loaded (redundant with Executive Summary)

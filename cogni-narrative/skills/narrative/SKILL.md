@@ -27,6 +27,9 @@ The skill accepts a **source directory** containing:
 - `--arc-id` (optional) -- explicit arc selection, overrides auto-detection
 - `--language` (optional) -- `en` or `de`, defaults to `en`
 - `--output-path` (optional) -- output file path
+- `--project-path` (optional) -- full research project directory; enables loading entity data beyond source_path
+- `--research-question` (optional) -- original research question for narrative hook framing
+- `--content-map` (optional) -- YAML map of content category keys to file/directory paths. When provided, Phase 1 loads additional context from these paths. Supported keys: `executive_summary`, `dimension_syntheses`, `trends_summary`, `trend_entities`, `megatrends_summary`, `megatrend_entities`, `domain_concepts`, `research_hub`, `initial_question`
 
 ---
 
@@ -88,7 +91,14 @@ Setup → Arc Selection → Load Content → Narrative Transformation → Valida
 1. Validate `--source-path` exists
 2. Load all `.md` files from source directory using Read tool
 3. Look for `narrative-config.json` in source directory; if found, load it
-4. Build CONTENT_REGISTRY: list of loaded files with titles, word counts, key sections
+4. If `--content-map` is provided, load additional files from each content_map path using Read/Glob:
+   - For directory paths (e.g., `trend_entities`): load all `.md` files from that directory
+   - For file paths (e.g., `executive_summary`): load that specific file
+   - For glob patterns (e.g., `dimension_syntheses`): expand and load matching files
+   - Add each loaded file to CONTENT_REGISTRY with its content_map key as category tag (e.g., `trend_entities`, `megatrend_entities`, `domain_concepts`)
+   - If a content_map path does not exist, log a warning and continue (non-blocking)
+   - If `--research-question` is provided, store it in CONTENT_REGISTRY as metadata for hook construction
+5. Build CONTENT_REGISTRY: list of loaded files with titles, word counts, key sections, and category tags
 
 ### Phase 2: Arc Selection
 

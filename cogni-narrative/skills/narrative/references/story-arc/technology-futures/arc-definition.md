@@ -68,8 +68,8 @@ Identify and describe emerging technological capabilities that are reaching prac
 
 **Source Content:**
 - Executive Summary (emerging technology mentions) - Baseline context
-- **Trends "Watch" and "Act" columns (primary)** - Loaded via `scripts/load-trends.sh` with filter `"Watch+Act"`
-- **Domain Concepts (capability definitions)** - Loaded via `scripts/load-concepts.sh`
+- **Trends "Watch" and "Act" columns (primary)** - Loaded from `content_map.trend_entities` (11-trends/data/), filtered to urgency="Watch" or "Act"
+- **Domain Concepts (capability definitions)** - Loaded from `content_map.domain_concepts` (05-domain-concepts/data/)
 - Dimension syntheses (technological developments) - NOT loaded (redundant with Executive Summary)
 - Megatrends (technology macro-trends) - NOT loaded for Technology Futures arc
 

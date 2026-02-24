@@ -62,8 +62,8 @@ Identify macro forces (regulatory, technological, social, economic) driving indu
 
 **Source Content:**
 - Executive Summary (macro trends) - Baseline context
-- **Megatrends (primary)** - Loaded via `scripts/load-megatrends.sh`
-- **Trends (industry-level developments)** - Loaded via `scripts/load-trends.sh` with filter `"all"`
+- **Megatrends (primary)** - Loaded from `content_map.megatrend_entities` (06-megatrends/data/)
+- **Trends (industry-level developments)** - Loaded from `content_map.trend_entities` (11-trends/data/)
 - Dimension syntheses (systemic factors) - NOT loaded (redundant with Executive Summary)
 
 **Source Content Mapping Example:**
