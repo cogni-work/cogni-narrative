@@ -1,12 +1,12 @@
 # Phase 4b: Arc-Specific Insight Summary (technology-futures)
 
-**Arc Framework:** What's Emerging → Converging → Possible → Required
+**Arc Framework:** What's Emerging -> Converging -> Possible -> Required
 
 **Research Type:** All types | **Arc:** `technology-futures` (Tier 4)
 
 **Objective:** Generate insight-summary.md using Technology Futures framework with journalistic storytelling patterns.
 
-**Critical:** This phase creates ONLY insight-summary.md. Phase-4a (always executed) already created synthesis-cross-dimensional.md with generic cross-dimensional patterns.
+**Critical:** This phase generates `insight-summary.md` using the arc-specific framework.
 
 **Inputs:** Dimension syntheses (Phase 3), arc entities (findings, sources, trends-watch+act, concepts), DIMENSION_REGISTRY, ENTITY_REGISTRIES
 
@@ -14,17 +14,17 @@
 
 ---
 
-## Step 4.7: Generate Insight Summary
+## Step 4.1: Generate Insight Summary
 
 **Objective:** Transform synthesis-cross-dimensional.md (400-600 words) into insight-summary.md (1,450-1,900 words) using technology-futures journalistic patterns.
 
 **Input:** `12-synthesis/synthesis-cross-dimensional.md` (just created)
 **Output:** `insight-summary.md` at project root
 
-**Arc-Specific Patterns:** What's Emerging → What's Converging → What's Possible → What's Required
+**Arc-Specific Patterns:** What's Emerging -> What's Converging -> What's Possible -> What's Required
 **Word Count:** 1,450-1,900 words (3-4x expansion)
 
-### Step 4.7.1: Load Arc Pattern References
+### Step 4.1.1: Load Arc Pattern References
 
 **Reference files to use:**
 ```
@@ -37,7 +37,7 @@ references/story-arc/technology-futures/whats-required-patterns.md
 
 Use Read tool to load these pattern references.
 
-### Step 4.7.2: Load Evidence Entities (Context Tier 4)
+### Step 4.1.2: Load Evidence Entities (Context Tier 4)
 
 **For evidence grounding:**
 - Load top 20 findings from `04-findings/data/` (quality_score >= 0.65)
@@ -47,7 +47,7 @@ Use Read tool to load these pattern references.
 
 **Implementation:** Use Glob + Read to load entity files, parse frontmatter.
 
-### Step 4.7.2b: Count Entity Files for Stats Grid
+### Step 4.1.3: Count Entity Files for Stats Grid
 
 **Count entity files** to populate `stats_*` frontmatter fields and the inline HTML stats grid:
 
@@ -65,7 +65,7 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
 
-### Step 4.7.3: Extended Thinking Transformation
+### Step 4.1.4: Extended Thinking Transformation
 
 **Use extended thinking to:**
 1. Read synthesis-cross-dimensional.md (400-600 words)
@@ -146,7 +146,7 @@ stats_claims: {count from 10-claims/data/}
 {350-450 words with evidence grounding}
 ```
 
-### Step 4.7.4: Validate Output
+### Step 4.1.5: Validate Output
 
 **Quality gates:**
 - [ ] Word count: 1,450-1,900 words
@@ -160,14 +160,14 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Stats grid values match `stats_*` frontmatter fields
 - [ ] Stats grid labels match project language (DE/EN)
 
-### Step 4.7.5: Write Output
+### Step 4.1.6: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.7.3)
+- content: Complete insight summary with frontmatter (from Step 4.1.4)
 
 **Verification:**
 ```bash
@@ -178,7 +178,7 @@ if [[ ! -f "insight-summary.md" ]]; then
 fi
 
 word_count=$(wc -w < insight-summary.md | tr -d ' ')
-echo "✅ insight-summary.md created (${word_count} words) at project root"
+echo "insight-summary.md created (${word_count} words) at project root"
 ```
 
 **IMPORTANT:** File must be created as `insight-summary.md` (NO dot prefix, NO subdirectory).
@@ -187,7 +187,7 @@ echo "✅ insight-summary.md created (${word_count} words) at project root"
 
 ## Next Phase
 
-**Phase 5 Step 5.4:** Entity Catalog Validation validates all wikilinks reference loaded entities.
+**Phase 5:** Validation verifies all wikilinks reference loaded entities.
 
 ---
 
