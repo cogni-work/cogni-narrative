@@ -1,0 +1,12 @@
+{
+  "name": "cogni-narrative",
+  "version": "1.1.0",
+  "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks.",
+  "author": {
+    "name": "cogni-work",
+    "url": "https://github.com/cogni-work"
+  },
+  "repository": "https://github.com/cogni-work/cogni-narrative",
+  "license": "MIT",
+  "keywords": ["narrative", "story-arc", "synthesis", "executive-writing", "corporate-visions", "strategic-foresight"]
+}
