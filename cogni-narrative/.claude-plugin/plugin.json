@@ -1,6 +1,6 @@
 {
   "name": "cogni-narrative",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks.",
   "author": {
     "name": "cogni-work",
