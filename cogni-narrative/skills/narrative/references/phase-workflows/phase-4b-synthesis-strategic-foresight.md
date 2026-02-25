@@ -33,6 +33,31 @@
 
 **Implementation:** Use Glob + Read to load entity files, parse frontmatter.
 
+**Reasoning guidance for entity loading:**
+
+Before loading, think through what each entity type contributes to this specific arc:
+
+1. **Findings** serve as the evidence backbone. When loading findings, mentally categorize each by which arc element it will support:
+   - Findings about emerging patterns or anomalies -> Signals
+   - Findings about structural drivers or macro forces -> Scenarios (as scenario axes)
+   - Findings about organizational capabilities or actions -> Strategies
+   - Findings about timing, urgency, or decision windows -> Decisions
+
+2. **Sources** establish credibility. After loading, note which sources are most authoritative for forward-looking claims vs. current-state claims. Strategic foresight narratives require sources that credibly support future-oriented assertions, not just retrospective analysis.
+
+3. **Trends across all planning horizons** are the primary differentiator for Tier 3 arcs. After loading trends, perform this mental sort:
+   - Group trends by `planning_horizon` (or `urgency` field): "Watch" trends feed the Signals element, "Act" trends feed Decisions, and all trends inform Scenarios
+   - Identify trend pairs that point in contradictory directions -- these become scenario axes
+   - Note trends that span multiple dimensions -- these indicate convergence points useful for Scenarios and Strategies
+
+4. **Megatrends** (if present in `06-megatrends/data/`) are scenario axis generators. Load them and think: "Which 2-3 megatrends create the most divergent futures when their extremes are combined?" These become the structural skeleton of the Scenarios element.
+
+**After loading, verify you have sufficient material:**
+- At least 3-4 "Watch" trends for the Signals element
+- At least 2 megatrends or macro-level trends for scenario axis construction
+- At least 8 findings with quality_score >= 0.65 for citation grounding across all 4 elements
+- If any category is thin, note this -- you will need to lean more heavily on the cross-dimensional synthesis content for that element
+
 ### Step 4.1.2: Count Entity Files for Stats Grid
 
 **Count entity files** to populate `stats_*` frontmatter fields and the inline HTML stats grid:
@@ -51,17 +76,130 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
 
+**Before proceeding:** Confirm you have all 6 integer counts stored. These exact values must appear in both the YAML frontmatter `stats_*` fields AND the inline HTML stats grid. Any mismatch between frontmatter and grid will fail validation.
+
 ### Step 4.1.3: Extended Thinking Transformation
 
-**Use extended thinking to:**
-1. Read synthesis-cross-dimensional.md (400-600 words)
-2. Apply strategic-foresight patterns from loaded references
-3. Expand each of 4 arc elements with:
-   - Journalistic storytelling techniques
-   - Evidence grounding (findings + sources + trends)
-   - Entity wikilinks (40-50 total)
-4. Generate arc-specific title (compelling, not generic)
-5. Expand to 1,450-1,900 words
+**This is the most cognitively demanding step.** Follow the sub-steps below in sequence. Do not skip ahead -- each sub-step produces an intermediate reasoning artifact that the next sub-step depends on.
+
+#### Sub-step A: Internalize the Source Material
+
+Read `synthesis-cross-dimensional.md` (400-600 words). Before doing anything else, answer these questions in your reasoning:
+
+1. **What is the core thesis?** State it in one sentence. This becomes the anchor for all 4 arc elements.
+2. **What research question does this address?** This becomes the subtitle and frames the narrative hook.
+3. **What are the 2-3 most surprising or counterintuitive findings?** These are candidates for Signals and for the opening hook.
+4. **What tensions or contradictions exist in the evidence?** These tensions become scenario axes.
+5. **What practical implications are mentioned or implied?** These feed Strategies and Decisions.
+
+#### Sub-step B: Map Evidence to Arc Elements
+
+Now, with the source material internalized, explicitly assign your loaded entities to the 4 arc elements. Think through each mapping before writing:
+
+**Signals (Weak Signals and Early Indicators):**
+- Which findings describe *emerging* patterns (not established ones)?
+- Which trends have urgency="Watch" or a distant planning_horizon? These are your primary signals.
+- Which data points are counterintuitive or contradictory? Weak signals often appear as anomalies.
+- Target: 3-5 distinct signals, each grounded in at least one finding or trend entity.
+
+**Scenarios (Alternative Future States):**
+- Which megatrends create the highest-leverage scenario axes? A good axis has two plausible extremes (e.g., "centralized vs. decentralized," "rapid adoption vs. resistance").
+- Select 2 megatrends (or major macro-trends) as your scenario axes. Their cross-product yields 2-3 distinct scenarios.
+- For each scenario: which trends from *different planning horizons* reinforce its plausibility? A scenario is credible when short-term "Act" trends and long-term "Watch" trends both point toward it.
+- Each scenario must be internally consistent -- signals must reinforce each other within each scenario.
+- Scenarios must be genuinely divergent (incompatible futures), not variations on the same theme.
+
+**Strategies (Robust Actions):**
+- Which actions or recommendations from the synthesis work across *all* scenarios you constructed?
+- Identify "no-regret moves" -- actions valuable regardless of which future materializes.
+- Identify "option-creating moves" -- actions that increase flexibility without committing to one scenario.
+- Strategies must reference the scenarios by name to demonstrate robustness analysis.
+
+**Decisions (Near-Term Choices):**
+- What decisions must be made *now* (before uncertainty resolves)?
+- For each decision, identify the trigger signal -- what observable development would indicate it is time to escalate or change course?
+- Assess reversibility: flag which decisions are easily reversible (low risk to act now) vs. irreversible (worth waiting for more signal clarity).
+- Decisions must connect back to the Strategies -- they are the concrete "first moves" of the strategic playbook.
+
+#### Sub-step C: Construct the Narrative Hook (Opening Paragraph)
+
+Before writing the hook, reason about what makes strategic foresight hooks compelling:
+
+- The hook must establish *genuine uncertainty* -- not a known trend, but an open question about which future will unfold.
+- Use the pattern: "[Signal 1] suggests [future A]. [Signal 2] suggests [future B]. [Signal 3] makes both plausible. The future is [uncertainty dimension] -- and that creates strategic opportunity."
+- Ground with 1-2 citations from your strongest findings.
+- Target: 150-200 words.
+- The hook must make the reader feel that *not thinking about multiple futures* is a strategic risk.
+
+#### Sub-step D: Draft Each Arc Element
+
+For each of the 4 elements, follow this atomic sequence:
+
+1. **Write the section header** using the exact arc-specific format:
+   - `## Signals: Early Indicators`
+   - `## Scenarios: Future States`
+   - `## Strategies: Adaptive Approaches`
+   - `## Decisions: Action Framework`
+
+2. **Write the opening sentence** that establishes the element's purpose in the narrative flow. Think: "How does this element logically follow from the previous one?" Use the transition patterns:
+   - Hook -> Signals: "Four weak signals suggest divergent futures."
+   - Signals -> Scenarios: "These signals combine into [N] plausible scenarios."
+   - Scenarios -> Strategies: "Robust strategies create value regardless of which scenario unfolds."
+   - Strategies -> Decisions: "Executing robust strategies requires near-term decisions about [areas]."
+
+3. **Draft the body** using these element-specific reasoning guides:
+
+   **For Signals (350-450 words):**
+   - Present each signal as an observed data point, not an opinion. Use "Watch" trends and findings.
+   - Quantify directional change where possible (e.g., "X% in 2020 to Y% in 2026").
+   - Frame signals as "stress fractures" or "early indicators," not established trends.
+   - Show at least one pair of contradictory signals to establish genuine uncertainty.
+   - Include 8-12 wikilinks to trend and finding entities.
+
+   **For Scenarios (350-450 words):**
+   - Name each scenario distinctively (e.g., "Platform Capitalism," not "Scenario 1").
+   - Build each scenario from the signal combinations established in the previous section.
+   - Use megatrends as the structural axes -- state the axis explicitly (e.g., "Axis: Data Sovereignty Stringency -- Low vs. High").
+   - Show how trends from *different planning horizons* converge in each scenario.
+   - For each scenario, state one concrete implication for the organization/reader.
+   - Include 8-12 wikilinks to megatrend, trend, and finding entities.
+
+   **For Strategies (350-450 words):**
+   - Categorize strategies as: no-regret moves, option-creating moves, and scenario-specific hedges.
+   - For each strategy, explicitly state which scenarios it serves (e.g., "This strategy creates value in both [Scenario A] and [Scenario B]").
+   - Ground strategies in findings that demonstrate feasibility or precedent.
+   - Include 8-12 wikilinks to finding, source, and trend entities.
+
+   **For Decisions (350-450 words):**
+   - Frame decisions as time-bound choices with explicit decision triggers.
+   - For each decision, state: what to decide, when to decide, what signal triggers escalation, and whether the decision is reversible.
+   - Connect each decision to the strategies it enables.
+   - End with a closing sentence that emphasizes decision-making under uncertainty, not prediction. Use the closing pattern: "The goal isn't predicting which future arrives -- it's building capability to thrive in any of them."
+   - Include 8-12 wikilinks to finding, source, and trend entities.
+
+4. **Count wikilinks** after drafting each element. Running total must reach 40-50 across all 4 elements. If you are below pace after an element (e.g., fewer than 10 after Signals), increase density in subsequent elements. If you are above pace, reduce to avoid clutter.
+
+#### Sub-step E: Generate the Title
+
+Think about what makes a strategic foresight title compelling:
+
+- It should reference the *domain* of uncertainty, not just the topic (e.g., "Navigating the Identity Crossroads" rather than "Digital Identity Analysis").
+- It should imply multiple futures (foresight framing), not a single prediction.
+- It must NOT be generic (never use "Insight Summary" or "Strategic Analysis").
+- Test: does the title make a reader curious about *which* future will unfold? If not, revise.
+
+#### Sub-step F: Assemble the Complete Document
+
+Now assemble all components into the final structure. Before writing, verify you have:
+
+- [ ] Title (from Sub-step E)
+- [ ] Research question for subtitle
+- [ ] All 6 stats counts (from Step 4.1.2)
+- [ ] Opening hook paragraph (from Sub-step C)
+- [ ] All 4 arc element sections (from Sub-step D)
+- [ ] Closing sentence in the Decisions section
+
+Assemble using this exact structure -- pay careful attention to the frontmatter field names and the stats grid HTML placement:
 
 **Structure:**
 ```markdown
@@ -134,6 +272,14 @@ stats_claims: {count from 10-claims/data/}
 
 ### Step 4.1.4: Validate Output
 
+**Before checking the gates below, re-read your complete output and ask yourself these diagnostic questions:**
+
+1. **Narrative coherence:** Does each section logically flow from the previous one? Would a reader who skips to Strategies still understand what scenarios they reference?
+2. **Foresight integrity:** Are the scenarios genuinely divergent (incompatible futures), or are they variations on the same theme? If you can merge two scenarios without contradiction, they are not divergent enough.
+3. **Evidence density:** Can you point to a specific finding or trend entity for every major claim? If any paragraph lacks evidence grounding, it will read as opinion rather than analysis.
+4. **Wikilink distribution:** Are wikilinks spread across all 4 elements, or clustered in one? Clustering suggests uneven evidence grounding.
+5. **Word budget:** Did any element significantly overshoot or undershoot its 350-450 word target? Overshooting usually means unfocused writing; undershooting usually means missing evidence or reasoning.
+
 **Quality gates:**
 - [ ] Word count: 1,450-1,900 words
 - [ ] All 4 arc elements present with arc-specific headers
@@ -146,9 +292,22 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Stats grid values match `stats_*` frontmatter fields
 - [ ] Stats grid labels match project language (DE/EN)
 
+**If any gate fails, fix before proceeding.** Common failure patterns and their fixes:
+
+| Failure | Likely Cause | Fix |
+|---------|-------------|-----|
+| Word count too low | Elements lack sufficient evidence grounding | Add more finding/trend citations with contextual sentences |
+| Word count too high | Redundant content across elements | Check for repeated claims between Signals and Scenarios; each element must serve a distinct purpose |
+| Wikilinks below 40 | Entity names not linked | Re-scan loaded entities and link every mention of a finding, trend, or source by its entity name |
+| Wikilinks above 50 | Over-linking common terms | Remove wikilinks on second+ mentions of the same entity within a section |
+| Scenarios not divergent | Axes too similar | Revisit megatrend selection in Sub-step B; choose axes with higher orthogonality |
+| Stats mismatch | Frontmatter and grid created independently | Copy exact integer values from Step 4.1.2 into both locations |
+
 ### Step 4.1.5: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
+
+**Before writing, confirm the file path:** The output must be written to `{project_root}/insight-summary.md`. Think: "What is the project root directory?" It is the directory that contains the numbered entity directories (04-findings/, 06-megatrends/, 11-trends/, 12-synthesis/, etc.). The file goes at that level, NOT inside any subdirectory.
 
 **Use Write tool with explicit instruction:**
 - Call Write tool

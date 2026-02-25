@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "cogni-narrative",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks.",
   "license": "MIT",
   "owner": {
