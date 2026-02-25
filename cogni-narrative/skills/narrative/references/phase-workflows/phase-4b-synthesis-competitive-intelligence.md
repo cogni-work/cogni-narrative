@@ -62,7 +62,7 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Reasoning checkpoint:** Even though this is Tier 1 (only findings + sources loaded for evidence), you still count ALL entity types for the stats grid. The stats grid shows the full research corpus, not just what was loaded for grounding. Verify that each count is an integer (0 is valid). Record the exact values now -- you will insert them into both the YAML frontmatter AND the HTML stats grid, and these must match exactly.
 
-**Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
+**Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimensions, Concepts, Findings, Claims) for `en`.
 
 ### Step 4.1.3: OUTPUT TEMPLATE
 
@@ -110,7 +110,7 @@ stats_claims: {count from 10-claims/data/}
 <div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
   <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
     <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionen | EN: Dimensions}</div>
   </div>
   <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
     <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>

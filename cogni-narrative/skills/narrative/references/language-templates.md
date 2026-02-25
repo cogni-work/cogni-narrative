@@ -97,7 +97,7 @@ Headers for research catalog hub (research-hub.md) and cross-dimensional synthes
 | `LABEL_CITATIONS_CREATED` | Citations created | Zitate erstellt |
 | `LABEL_TOTAL_WIKILINKS` | Total wikilinks | Gesamt-Wikilinks |
 | `LABEL_BY_TYPE` | By type | Nach Typ |
-| `LABEL_DIM_SYNTHESES` | Dimension syntheses | Dimensionssynthesen |
+| `LABEL_DIM_SYNTHESES` | Dimensions | Dimensionen |
 | `LABEL_OTHER` | Other | Andere |
 | `LABEL_PRIORITY` | Priority | Priorität |
 | `LABEL_DIMENSIONS_ADDRESSED` | Dimensions Addressed | Adressierte Dimensionen |

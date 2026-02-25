@@ -61,7 +61,7 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Implementation:** Use Glob to count files in each entity `data/` directory. Store counts for use in frontmatter and stats grid HTML.
 
-**Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
+**Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimensions, Concepts, Findings, Claims) for `en`.
 
 > **Think:** Verify that all 6 counts are integers (not empty strings). If any directory is missing or empty, the count should be 0, not blank. These exact numbers will appear in both the YAML frontmatter AND the HTML stats grid -- they must match exactly.
 
@@ -111,7 +111,7 @@ stats_claims: {count from 10-claims/data/}
 <div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
   <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
     <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionen | EN: Dimensions}</div>
   </div>
   <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
     <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
