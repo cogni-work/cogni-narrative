@@ -7,7 +7,7 @@ description: "Transform structured content into compelling executive narratives 
 
 ## Purpose
 
-Transform input markdown files into a structured executive narrative (1,450-1,900 words) using one of 5 story arc frameworks. Each arc provides a distinct rhetorical progression — mapping source evidence to arc elements, applying narrative techniques, and producing a citation-grounded insight summary.
+Transform input markdown files into a structured executive narrative (1,450-1,900 words) using one of 5 story arc frameworks. Each arc provides a distinct rhetorical progression -- mapping source evidence to arc elements, applying narrative techniques, and producing a citation-grounded insight summary.
 
 ## When to Use
 
@@ -99,15 +99,67 @@ source_file_count: {N}
 
 ---
 
+## Immediate Action: Initialize TodoWrite
+
+Before reading any workflow phase, initialize phase-level tracking:
+
+```
+TodoWrite:
+- [ ] Phase 1: Setup & Content Loading
+- [ ] Phase 2: Arc Selection
+- [ ] Phase 3: Load Arc Patterns
+- [ ] Phase 4: Narrative Transformation
+- [ ] Phase 5: Validation
+- [ ] Phase 6: Write Output
+```
+
+**Progressive expansion:** Each phase adds step-level todos when started. Initial count: 6 phase-level todos. Final count: ~18-24 step-level todos across all phases.
+
+---
+
+## Execution Protocol
+
+⛔ **MANDATORY:** Read each phase reference file BEFORE executing that phase. Do NOT skip reference reads -- transformation quality depends entirely on loading arc patterns and techniques before writing.
+
+**Workflow enforcement:**
+1. Mark each phase todo as `[in_progress]` before starting
+2. Read the required reference file(s) for that phase
+3. Execute all phase steps
+4. Answer self-verification questions (where present)
+5. Complete the phase completion checklist
+6. Mark the phase todo as `[completed]` before proceeding
+
+---
+
 ## Core Workflow
 
 ```text
-Setup → Arc Selection → Pattern Loading → Transformation → Validation → Write
+Phase 1      Phase 2        Phase 3          Phase 4            Phase 5       Phase 6
+Setup  --->  Arc      --->  Pattern   --->   Transformation --> Validation -> Write
+& Load       Selection      Loading          (arc-specific)
+  |            |               |                  |                |            |
+  v            v               v                  v                v            v
+CONTENT     arc_id        arc-definition     insight-summary   quality      output
+REGISTRY    confirmed     + patterns         draft             gates        file
+                          + techniques                         pass         + JSON
 ```
 
-**MANDATORY:** Read each phase reference file BEFORE executing that phase.
-
 ### Phase 1: Setup & Content Loading
+
+**Mark todo:** `Phase 1: Setup & Content Loading` → `[in_progress]`
+
+**Expand phase todos:**
+```
+TodoWrite:
+- [in_progress] Phase 1: Setup & Content Loading
+  - [ ] 1.1: Validate source path
+  - [ ] 1.2: Load source .md files
+  - [ ] 1.3: Load narrative-config.json (if present)
+  - [ ] 1.4: Load content-map files (if provided)
+  - [ ] 1.5: Build CONTENT_REGISTRY
+```
+
+**Steps:**
 
 1. Validate `--source-path` exists; HALT if not found
 2. Load all `.md` files from source directory using Read tool
@@ -121,9 +173,40 @@ Setup → Arc Selection → Pattern Loading → Transformation → Validation �
 5. If `--research-question` provided, store in CONTENT_REGISTRY for hook construction
 6. Build CONTENT_REGISTRY: list of loaded files with titles, word counts, key sections, category tags
 
+**Content-based checkpoint -- verify comprehension:**
+
+> After building CONTENT_REGISTRY, answer these questions from the loaded content:
+> 1. How many source files were loaded? (must be >= 1)
+> 2. What is the approximate total word count across all sources?
+> 3. What are the 2-3 dominant themes or topics in the source material?
+>
+> If unable to answer any question, Phase 1 is INCOMPLETE -- re-read source files.
+
+**Self-verification:**
+
+- [ ] Source path validated and exists? (YES/NO)
+- [ ] At least 1 `.md` file loaded? (YES/NO)
+- [ ] CONTENT_REGISTRY built with file titles, word counts, and category tags? (YES/NO)
+
+⛔ If any answer is NO: STOP. Fix the issue before proceeding to Phase 2.
+
+**Mark todo:** `Phase 1` → `[completed]`
+
+---
+
 ### Phase 2: Arc Selection
 
+**Phase entry gate:**
+> Verify Phase 1 completed: CONTENT_REGISTRY must exist with >= 1 loaded file.
+> If CONTENT_REGISTRY is empty or undefined: STOP. Return to Phase 1.
+
+**Mark todo:** `Phase 2: Arc Selection` → `[in_progress]`
+
+⛔ **MANDATORY -- Read before executing:**
+
 **Read:** [references/story-arc/arc-registry.md](references/story-arc/arc-registry.md)
+
+**Steps:**
 
 1. If `--arc-id` provided, use it directly
 2. If `narrative-config.json` contains `content_type`, apply detection algorithm from arc-registry
@@ -136,17 +219,90 @@ Setup → Arc Selection → Pattern Loading → Transformation → Validation �
 
 **Store:** `arc_id`, `arc_display_name`, `detection_reason`
 
+**Self-verification:**
+
+- [ ] Arc registry reference read before executing detection? (YES/NO)
+- [ ] `arc_id` resolved (explicit, detected, or fallback)? (YES/NO)
+- [ ] `arc_display_name` and `detection_reason` stored? (YES/NO)
+- [ ] User confirmation obtained (or arc was explicitly provided)? (YES/NO)
+
+⛔ If any answer is NO: STOP. Fix before proceeding to Phase 3.
+
+**Mark todo:** `Phase 2` → `[completed]`
+
+---
+
 ### Phase 3: Load Arc Patterns
 
-Read the arc-specific files:
+**Phase entry gate:**
+> Verify Phase 2 completed: `arc_id` must be set to a valid arc identifier.
+> Valid values: `corporate-visions`, `technology-futures`, `competitive-intelligence`, `strategic-foresight`, `industry-transformation`.
+> If `arc_id` is unset or invalid: STOP. Return to Phase 2.
+
+**Mark todo:** `Phase 3: Load Arc Patterns` → `[in_progress]`
+
+**Expand phase todos:**
+```
+TodoWrite:
+- [in_progress] Phase 3: Load Arc Patterns
+  - [ ] 3.1: Read arc-definition.md
+  - [ ] 3.2: Read 4 element pattern files
+  - [ ] 3.3: Read techniques-overview.md
+```
+
+⛔ **MANDATORY -- Read ALL of the following before proceeding to Phase 4:**
 
 1. `references/story-arc/{arc_id}/arc-definition.md` -- element definitions, word targets, quality gates
 2. `references/story-arc/{arc_id}/{element}-patterns.md` -- transformation patterns per element (4 files)
 3. `references/narrative-techniques/techniques-overview.md` -- narrative techniques reference
 
+**Content-based checkpoint -- prove pattern comprehension:**
+
+> After reading all pattern files, answer from loaded content:
+> 1. Name all 4 arc elements in order for the selected arc.
+> 2. What is the word target for each element?
+> 3. Which narrative techniques apply to which elements? (consult the technique-arc matrix)
+>
+> If unable to answer any question, re-read the pattern files. Do NOT proceed to Phase 4 without this knowledge.
+
+**Self-verification:**
+
+- [ ] Arc definition file read for `{arc_id}`? (YES/NO)
+- [ ] All 4 element pattern files read? (YES/NO)
+- [ ] Techniques overview read? (YES/NO)
+- [ ] Can name all 4 elements with word targets from memory? (YES/NO)
+
+⛔ If any answer is NO: STOP. Read the missing file(s) before proceeding.
+
+**Mark todo:** `Phase 3` → `[completed]`
+
+---
+
 ### Phase 4: Narrative Transformation
 
+**Phase entry gate:**
+> Verify Phase 3 completed: arc-definition, all 4 element pattern files, and techniques-overview must have been read.
+> Quick check: Can you name all 4 arc elements and their word targets without re-reading? If NO: return to Phase 3.
+
+**Mark todo:** `Phase 4: Narrative Transformation` → `[in_progress]`
+
+**Expand phase todos:**
+```
+TodoWrite:
+- [in_progress] Phase 4: Narrative Transformation
+  - [ ] 4.1: Read arc-specific workflow (if exists)
+  - [ ] 4.2: Map source content to arc elements
+  - [ ] 4.3: Transform each element with patterns and techniques
+  - [ ] 4.4: Assemble full narrative (title, hook, elements, closing)
+```
+
+⛔ **MANDATORY -- Read the arc-specific workflow before transforming:**
+
 **Read:** `references/phase-workflows/phase-4b-synthesis-{arc_id}.md` (if exists)
+
+This file contains detailed sub-steps, extended thinking prompts, and quality gates specific to the selected arc. If the file exists, follow its workflow instead of the summary below.
+
+**Summary workflow (use when no arc-specific file exists):**
 
 For each of the 4 arc elements:
 
@@ -167,28 +323,80 @@ Assemble the full narrative:
 3. Assemble 4 elements with transitions
 4. Write closing using arc's closing pattern
 
+**Self-verification:**
+
+- [ ] Arc-specific workflow file read (or confirmed non-existent)? (YES/NO)
+- [ ] All 4 elements written with arc-specific headers? (YES/NO)
+- [ ] Narrative techniques applied per technique-arc matrix? (YES/NO)
+- [ ] Hook paragraph present (150-200 words)? (YES/NO)
+- [ ] Title is arc-specific and compelling (not "Insight Summary")? (YES/NO)
+
+⛔ If any answer is NO: STOP. Fix the narrative before proceeding to validation.
+
+**Mark todo:** `Phase 4` → `[completed]`
+
+---
+
 ### Phase 5: Validation
+
+**Phase entry gate:**
+> Verify Phase 4 completed: a complete narrative draft must exist with title, hook, 4 elements, and citations.
+> If any structural component is missing: STOP. Return to Phase 4.
+
+**Mark todo:** `Phase 5: Validation` → `[in_progress]`
 
 All quality gates must pass:
 
+**Critical gates (narrative unusable without these):**
+
 - [ ] Total word count: 1,450-1,900
 - [ ] All 4 arc elements present with arc-specific headers
+- [ ] Title is arc-specific (not generic "Insight Summary")
 - [ ] Hook present (150-200 words)
+
+**Evidence gates (narrative lacks credibility without these):**
+
+- [ ] Citations: minimum 15, format `<sup>[N](file.md)</sup>`
+- [ ] Every quantitative claim has a citation
+- [ ] No fabricated references -- all cite loaded source files
+
+**Structure gates:**
+
 - [ ] Element word counts within targets (+/-50 words)
 - [ ] Arc-specific techniques applied (check arc quality gates)
-- [ ] Citations: minimum 15, format `<sup>[N](file.md)</sup>`
 - [ ] Smooth transitions between elements
-- [ ] Title is arc-specific (not generic "Insight Summary")
 - [ ] Frontmatter contains all required fields
-- [ ] Language correct: proper umlauts for `de` (ä, ö, ü, ß), ZERO ASCII fallbacks (ae, oe, ue, ss) in body text
 
-If validation fails: report failures, fix, re-validate.
+**Language gates (if `de`):**
+
+- [ ] Proper umlauts throughout (ä, ö, ü, ß)
+- [ ] ZERO ASCII fallbacks (ae, oe, ue, ss) in body text
+
+**If any gate fails:** Report specific failures, fix, re-validate ALL gates (not just the failed one).
+
+**Mark todo:** `Phase 5` → `[completed]`
+
+---
 
 ### Phase 6: Write Output
+
+**Phase entry gate:**
+> Verify Phase 5 completed: all quality gates must have passed.
+> If any critical or evidence gate still fails: STOP. Return to Phase 5.
+
+**Mark todo:** `Phase 6: Write Output` → `[in_progress]`
 
 1. Write narrative to output path (default: `insight-summary.md` in source directory)
 2. Verify file created with correct word count
 3. Return JSON summary (see Output section above)
+
+**Phase completion:**
+
+- [ ] File written to correct output path? (YES/NO)
+- [ ] Word count verified after write? (YES/NO)
+- [ ] JSON summary returned? (YES/NO)
+
+**Mark todo:** `Phase 6` → `[completed]`
 
 ---
 
@@ -298,6 +506,5 @@ On any HALT, return error JSON:
 | `references/story-arc/{arc_id}/arc-definition.md` | Element definitions, word targets, quality gates | Phase 3 |
 | `references/story-arc/{arc_id}/*-patterns.md` | Transformation patterns per element (4 files) | Phase 3 |
 | `references/narrative-techniques/techniques-overview.md` | 8 narrative techniques with arc application matrix | Phase 3 |
-| `references/phase-workflows/narrative-transformation.md` | General transformation pipeline | Phase 4 |
 | `references/phase-workflows/phase-4b-synthesis-{arc_id}.md` | Arc-specific transformation workflow | Phase 4 |
 | `references/language-templates.md` | Localized headers for en/de | Phase 4 (if `de`) |
