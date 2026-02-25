@@ -135,6 +135,8 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 #### Sub-step E: Generate the Output
 
+**CRITICAL LANGUAGE CHECK:** If `language: de`, ALL generated text MUST use proper Unicode umlauts (ä, ö, ü, Ä, Ö, Ü, ß). Writing "fuer" instead of "für", "Aenderung" instead of "Änderung", or "Uebergangsfrist" instead of "Übergangsfrist" is a BLOCKING DEFECT. ASCII transliterations (ae, oe, ue) are ONLY for file names and slugs, NEVER for body text, titles, or headings.
+
 **Now write the complete insight-summary.md.** Follow this exact sequence:
 
 1. Write frontmatter (use template below, fill all `stats_*` fields from Step 4.1.2)
@@ -258,6 +260,7 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Inline HTML stats grid present between opening paragraph and first `---`
 - [ ] Stats grid values match `stats_*` frontmatter fields
 - [ ] Stats grid labels match project language (DE/EN)
+- [ ] **German umlaut check (if `de`):** Body text contains ZERO instances of ASCII fallbacks (fuer, ueber, Aenderung, Uebersicht, etc.) -- all must use ä, ö, ü, ß
 
 **If any gate fails:** Identify the specific failure, determine the minimum edit to fix it, apply the fix, then re-check all gates. Do not proceed to Step 4.1.5 until all gates pass.
 

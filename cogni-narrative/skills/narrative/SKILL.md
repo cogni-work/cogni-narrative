@@ -180,7 +180,7 @@ All quality gates must pass:
 - [ ] Smooth transitions between elements
 - [ ] Title is arc-specific (not generic "Insight Summary")
 - [ ] Frontmatter contains all required fields
-- [ ] Language correct: proper umlauts for `de`, no ASCII fallbacks
+- [ ] Language correct: proper umlauts for `de` (ä, ö, ü, ß), ZERO ASCII fallbacks (ae, oe, ue, ss) in body text
 
 If validation fails: report failures, fix, re-validate.
 
@@ -210,12 +210,20 @@ See [references/story-arc/arc-registry.md](references/story-arc/arc-registry.md)
 
 Generate ALL narrative content in the specified language (`--language` parameter).
 
-**German (`de`) rules:**
+### German (`de`) -- MANDATORY Umlaut Rules
 
-| Element | Rule |
-|---------|------|
-| Body text, headings | Use proper umlauts: ae->ä, oe->ö, ue->ü, ss->ß |
-| File names, slugs, YAML keys | Use ASCII transliterations: ü->ue, ä->ae, ö->oe, ß->ss |
+**CRITICAL: When `language: de`, you MUST use proper Unicode umlauts (ä, ö, ü, Ä, Ö, Ü, ß) in ALL generated text. ASCII transliterations (ae, oe, ue, ss) in body text are a BLOCKING DEFECT.**
+
+| Element | Rule | Correct | WRONG |
+|---------|------|---------|-------|
+| Body text | Proper umlauts | für, über, Änderung, größte | fuer, ueber, Aenderung, groesste |
+| Section headings | Proper umlauts | Übersicht, Kräfte, Führung | Uebersicht, Kraefte, Fuehrung |
+| Frontmatter `title`, `subtitle` | Proper umlauts | "Maschinenbau: Drei Kräfte" | "Maschinenbau: Drei Kraefte" |
+| Frontmatter `research_question` | Proper umlauts | "Welche Trends beeinflussen" | "Welche Trends beeinflussen" |
+| File names, slugs | ASCII transliterations | ue, ae, oe, ss | ü, ä, ö, ß |
+| YAML keys, identifiers | ASCII only | arc_id, entity_type | -- |
+
+**Self-check after generation:** Scan the complete output for these ASCII patterns that indicate umlaut failure: `ue` (should be `ü`), `ae` (should be `ä`), `oe` (should be `ö`), `ss` where `ß` is correct. Common failures: "fuer"→"für", "ueber"→"über", "Aenderung"→"Änderung", "groesste"→"größte", "Fuehrung"→"Führung", "Uebergangsfrist"→"Übergangsfrist", "Praezision"→"Präzision", "Massnahme"→"Maßnahme".
 
 See [references/language-templates.md](references/language-templates.md) for localized headers per arc.
 

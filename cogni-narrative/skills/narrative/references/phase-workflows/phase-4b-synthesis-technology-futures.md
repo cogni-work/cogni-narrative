@@ -155,6 +155,8 @@ Insert the HTML stats grid between the opening paragraph and the first `---` sep
 
 #### Sub-step G: Assemble and Self-Review
 
+**CRITICAL LANGUAGE CHECK:** If `language: de`, ALL generated text MUST use proper Unicode umlauts (ä, ö, ü, Ä, Ö, Ü, ß). Writing "fuer" instead of "für", "Aenderung" instead of "Änderung", or "Uebergangsfrist" instead of "Übergangsfrist" is a BLOCKING DEFECT. ASCII transliterations (ae, oe, ue) are ONLY for file names and slugs, NEVER for body text, titles, or headings.
+
 Before finalizing, review the complete draft against these quality checks:
 
 1. **Narrative flow:** Read the transition from each element to the next. Does What's Emerging flow naturally into What's Converging? Does What's Possible set up What's Required? If any transition feels abrupt, add a bridging sentence at the element boundary.
@@ -252,6 +254,7 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Inline HTML stats grid present between opening paragraph and first `---`
 - [ ] Stats grid values match `stats_*` frontmatter fields
 - [ ] Stats grid labels match project language (DE/EN)
+- [ ] **German umlaut check (if `de`):** Body text contains ZERO instances of ASCII fallbacks (fuer, ueber, Aenderung, Uebersicht, etc.) -- all must use ä, ö, ü, ß
 
 **If any gate fails:** Identify which sub-step (A-G) produced the defect, return to that sub-step's reasoning, and fix the specific issue. Do not regenerate the entire document -- make targeted repairs.
 

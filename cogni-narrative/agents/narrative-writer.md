@@ -62,7 +62,8 @@ When invoked, you will receive parameters specifying:
 2. When `content_map` is provided, pass `project_path`, `research_question`, and `content_map` through to the narrative skill as additional parameters
 3. Follow the skill's complete 6-phase workflow
 4. Do NOT ask user questions during execution -- use auto-detection for arc selection if `arc_id` is not provided
-5. Write the output file and return a JSON summary
+5. **German language (`de`): ALL body text, headings, titles, and frontmatter strings MUST use proper Unicode umlauts (ä, ö, ü, Ä, Ö, Ü, ß). NEVER use ASCII fallbacks (ae, oe, ue, ss) in generated text. ASCII transliterations are ONLY for file names and slugs.**
+6. Write the output file and return a JSON summary
 
 ## Output
 
