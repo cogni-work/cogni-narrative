@@ -370,14 +370,6 @@ Claim text<sup>[N](12-synthesis/synthesis-{dimension}.md)</sup>
 ❌ **Complex comparison:** Multiple percentages
 ✓ **Simple ratio:** "Action costs less than inaction by 2-3x"
 
-## Example Transformation
-
-See individual element pattern files for detailed examples:
-- `why-change-patterns.md` - Unconsidered need framing examples
-- `why-now-patterns.md` - Forcing function construction examples
-- `why-you-patterns.md` - Power Position (IS-DOES-MEANS) examples
-- `why-pay-patterns.md` - Compound impact calculation examples
-
 ## Version History
 
 - **v1.0.0:** Original hard-coded implementation in story-arc-mapping.md
@@ -390,5 +382,3 @@ See individual element pattern files for detailed examples:
 - `why-now-patterns.md` - Forcing function construction patterns
 - `why-you-patterns.md` - Power Position (IS-DOES-MEANS) patterns
 - `why-pay-patterns.md` - Cost of inaction calculation patterns
-- `../../phase-workflows/phase-2-extract.md` - Extraction logic for this arc
-- `../../phase-workflows/phase-3-transform.md` - Transformation logic for this arc

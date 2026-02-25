@@ -462,5 +462,3 @@ This explains why early adopters investing in all three capabilities discover no
 - `whats-converging-patterns.md` - Technology convergence analysis patterns
 - `whats-possible-patterns.md` - Opportunity articulation patterns
 - `whats-required-patterns.md` - Prerequisite specification patterns
-- `../../phase-workflows/phase-2-extract.md` - Extraction logic for this arc
-- `../../phase-workflows/phase-3-transform.md` - Transformation logic for this arc

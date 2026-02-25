@@ -24,20 +24,7 @@
 **Arc-Specific Patterns:** What's Emerging -> What's Converging -> What's Possible -> What's Required
 **Word Count:** 1,450-1,900 words (3-4x expansion)
 
-### Step 4.1.1: Load Arc Pattern References
-
-**Reference files to use:**
-```
-references/story-arc/technology-futures/arc-definition.md
-references/story-arc/technology-futures/whats-emerging-patterns.md
-references/story-arc/technology-futures/whats-converging-patterns.md
-references/story-arc/technology-futures/whats-possible-patterns.md
-references/story-arc/technology-futures/whats-required-patterns.md
-```
-
-Use Read tool to load these pattern references.
-
-### Step 4.1.2: Load Evidence Entities (Context Tier 4)
+### Step 4.1.1: Load Evidence Entities (Context Tier 4)
 
 **For evidence grounding:**
 - Load top 20 findings from `04-findings/data/` (quality_score >= 0.65)
@@ -47,7 +34,7 @@ Use Read tool to load these pattern references.
 
 **Implementation:** Use Glob + Read to load entity files, parse frontmatter.
 
-### Step 4.1.3: Count Entity Files for Stats Grid
+### Step 4.1.2: Count Entity Files for Stats Grid
 
 **Count entity files** to populate `stats_*` frontmatter fields and the inline HTML stats grid:
 
@@ -65,7 +52,7 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
 
-### Step 4.1.4: Extended Thinking Transformation
+### Step 4.1.3: Extended Thinking Transformation
 
 **Use extended thinking to:**
 1. Read synthesis-cross-dimensional.md (400-600 words)
@@ -146,7 +133,7 @@ stats_claims: {count from 10-claims/data/}
 {350-450 words with evidence grounding}
 ```
 
-### Step 4.1.5: Validate Output
+### Step 4.1.4: Validate Output
 
 **Quality gates:**
 - [ ] Word count: 1,450-1,900 words
@@ -160,14 +147,14 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Stats grid values match `stats_*` frontmatter fields
 - [ ] Stats grid labels match project language (DE/EN)
 
-### Step 4.1.6: Write Output
+### Step 4.1.5: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.1.4)
+- content: Complete insight summary with frontmatter (from Step 4.1.3)
 
 **Verification:**
 ```bash
