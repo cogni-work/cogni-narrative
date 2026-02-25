@@ -349,6 +349,55 @@ Domain concepts use IS/DOES/MEANS structure (same as generic megatrends).
 | `HEADER_RESEARCH_TYPE` | Research Type | Forschungstyp |
 | `HEADER_OBJECTIVES` | Objectives | Ziele |
 
+### Insight Summary (Arc Element Headers)
+
+Exact `##` section headers for insight-summary.md output, per arc and language. The narrative body MUST contain EXACTLY 4 `##` headers matching the selected arc's elements below. No creative alternatives, no additional `##` sections, no renaming.
+
+**industry-transformation:**
+
+| Element | English (en) | German (de) |
+|---------|--------------|-------------|
+| 1 | Forces: Transformation Drivers | Kräfte: Makro-Treiber |
+| 2 | Friction: Barriers to Change | Reibung: Widerstandspunkte |
+| 3 | Evolution: Pathway Forward | Evolution: Strukturelle Veränderungen |
+| 4 | Leadership: Strategic Imperatives | Führung: Positionierungsstrategien |
+
+**corporate-visions:**
+
+| Element | English (en) | German (de) |
+|---------|--------------|-------------|
+| 1 | Why Change: Unconsidered Needs | Warum Wandel: Unerkannte Handlungsbedarfe |
+| 2 | Why Now: Forcing Functions | Warum Jetzt: Handlungsdruck |
+| 3 | Why You: Unique Positioning | Warum Sie: Einzigartige Positionierung |
+| 4 | Why Pay: ROI Justification | Warum Investieren: ROI-Begründung |
+
+**technology-futures:**
+
+| Element | English (en) | German (de) |
+|---------|--------------|-------------|
+| 1 | What's Emerging: Technology Horizon | Was Entsteht: Technologie-Horizont |
+| 2 | What's Converging: Integration Points | Was Konvergiert: Integrationspunkte |
+| 3 | What's Possible: Application Scenarios | Was Möglich Ist: Anwendungsszenarien |
+| 4 | What's Required: Capability Development | Was Erforderlich Ist: Kompetenzentwicklung |
+
+**competitive-intelligence:**
+
+| Element | English (en) | German (de) |
+|---------|--------------|-------------|
+| 1 | Landscape: Competitive Overview | Landschaft: Wettbewerbsübersicht |
+| 2 | Shifts: Market Dynamics | Verschiebungen: Marktdynamik |
+| 3 | Positioning: Strategic Options | Positionierung: Strategische Optionen |
+| 4 | Implications: Action Priorities | Implikationen: Handlungsprioritäten |
+
+**strategic-foresight:**
+
+| Element | English (en) | German (de) |
+|---------|--------------|-------------|
+| 1 | Signals: Early Indicators | Signale: Frühindikatoren |
+| 2 | Scenarios: Future States | Szenarien: Zukunftsbilder |
+| 3 | Strategies: Adaptive Approaches | Strategien: Adaptive Ansätze |
+| 4 | Decisions: Action Framework | Entscheidungen: Handlungsrahmen |
+
 ## German Text Formatting
 
 When generating content in German (`language: "de"`):

@@ -37,7 +37,7 @@
 2. For each loaded finding, extract: `title`, `quality_score`, `dimension_id`, and the body content. These will be used for evidence grounding and wikilink generation.
 3. For each loaded source, extract: `title`, `reliability_score`, `source_type`, and any key claims. These provide citation authority.
 
-**Implementation:** Use Glob + Read to load entity files, parse frontmatter. Sort findings by quality_score descending, sources by reliability_score descending. Retain the sorted lists in working memory -- you will reference them repeatedly during Step 4.1.3.
+**Implementation:** Use Glob + Read to load entity files, parse frontmatter. Sort findings by quality_score descending, sources by reliability_score descending. Retain the sorted lists in working memory -- you will reference them repeatedly during Step 4.1.4.
 
 **After loading, mentally inventory what you have:**
 - How many findings loaded? Which dimensions do they cover?
@@ -64,7 +64,96 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
 
-### Step 4.1.3: Extended Thinking Transformation
+### Step 4.1.3: OUTPUT TEMPLATE
+
+**CRITICAL: Read this template BEFORE any extended thinking. This is the EXACT structure you must produce.**
+
+**Rule: EXACTLY 4 `##` headers. No creative alternatives. No additional sections. No renaming.**
+
+**Instruction: Fill in each section in order. Do NOT reorganize, rename, or add sections.**
+
+**English headers:**
+- `## Landscape: Competitive Overview`
+- `## Shifts: Market Dynamics`
+- `## Positioning: Strategic Options`
+- `## Implications: Action Priorities`
+
+**German headers (if `language: de`):**
+- `## Landschaft: Wettbewerbsübersicht`
+- `## Verschiebungen: Marktdynamik`
+- `## Positionierung: Strategische Optionen`
+- `## Implikationen: Handlungsprioritäten`
+
+**Structure:**
+```markdown
+---
+title: "{Arc-Specific Compelling Title}"
+subtitle: "{Research Question}"
+arc_id: "competitive-intelligence"
+arc_display_name: "Competitive Intelligence"
+word_count: {1450-1900}
+date_created: "{ISO 8601}"
+stats_syntheses: {count from 12-synthesis/data/}
+stats_megatrends: {count from 06-megatrends/data/}
+stats_trends: {count from 11-trends/data/}
+stats_concepts: {count from 05-domain-concepts/data/}
+stats_findings: {count from 04-findings/data/}
+stats_claims: {count from 10-claims/data/}
+---
+
+# {Arc-Specific Title}
+
+*{Research Question subtitle}*
+
+{Opening paragraph with narrative hook}
+
+<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
+    <div style="font-size:0.82em; color:#666;">Megatrends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
+    <div style="font-size:0.82em; color:#666;">Trends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
+  </div>
+</div>
+
+---
+
+## Landscape: Competitive Overview
+
+{350-450 words with evidence grounding}
+
+## Shifts: Market Dynamics
+
+{350-450 words with evidence grounding}
+
+## Positioning: Strategic Options
+
+{350-450 words with evidence grounding}
+
+## Implications: Action Priorities
+
+{350-450 words with evidence grounding}
+```
+
+### Step 4.1.4: Extended Thinking Sub-steps
 
 **This is the most cognitively demanding step.** You are expanding a 400-600 word cross-dimensional synthesis into a 1,450-1,900 word competitive intelligence narrative. Follow the sub-steps below in exact order. Do not skip ahead. Complete each reasoning task before moving to the next.
 
@@ -223,90 +312,22 @@ Before finalizing, review the complete draft against these checkpoints:
 6. **Technique verification:** Confirm you applied: Number Plays (at least 3 instances), Contrast Structure (at least 2 instances), Forcing Functions (at least 1 in Shifts or Implications), and You-Phrasing (at least 2 instances in Positioning or Implications).
 7. **Tier 1 quality check:** Since you had only findings + sources (no trends, concepts, or megatrends), verify that you maximized insight density from these limited entities. Each finding should be cited or wikilinked at least once. If any loaded findings went unused, consider where they could strengthen thin sections.
 
----
+**Now fill in the template from Step 4.1.3. Write each section in sequence. Do NOT deviate from the template structure.**
 
-**Use extended thinking to:**
-1. Read synthesis-cross-dimensional.md (400-600 words)
-2. Apply competitive-intelligence patterns from loaded references
-3. Expand each of 4 arc elements with:
-   - Journalistic storytelling techniques
-   - Evidence grounding (findings + sources)
-   - Entity wikilinks (40-50 total)
-4. Generate arc-specific title (compelling, not generic)
-5. Expand to 1,450-1,900 words
-
-**Structure:**
-```markdown
----
-title: "{Arc-Specific Compelling Title}"
-subtitle: "{Research Question}"
-arc_id: "competitive-intelligence"
-arc_display_name: "Competitive Intelligence"
-word_count: {1450-1900}
-date_created: "{ISO 8601}"
-stats_syntheses: {count from 12-synthesis/data/}
-stats_megatrends: {count from 06-megatrends/data/}
-stats_trends: {count from 11-trends/data/}
-stats_concepts: {count from 05-domain-concepts/data/}
-stats_findings: {count from 04-findings/data/}
-stats_claims: {count from 10-claims/data/}
----
-
-# {Arc-Specific Title}
-
-*{Research Question subtitle}*
-
-{Opening paragraph with narrative hook}
-
-<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
-    <div style="font-size:0.82em; color:#666;">Megatrends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
-    <div style="font-size:0.82em; color:#666;">Trends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
-  </div>
-</div>
-
----
-
-## Landscape: Competitive Overview
-
-{350-450 words with evidence grounding}
-
-## Shifts: Market Dynamics
-
-{350-450 words with evidence grounding}
-
-## Positioning: Strategic Options
-
-{350-450 words with evidence grounding}
-
-## Implications: Action Priorities
-
-{350-450 words with evidence grounding}
-```
-
-### Step 4.1.4: Validate Output
+### Step 4.1.5: Validate Output
 
 **Before checking gates, re-read the complete generated output from start to finish.** Do not validate from memory -- validate from the actual text.
+
+**HARD STRUCTURAL GATE (check FIRST -- blocks all other gates):**
+
+Count the `##` headers in the narrative body (below frontmatter):
+- [ ] EXACTLY 4 `##` headers (not more, not fewer)
+- [ ] Headers match the arc's exact element names from the template in Step 4.1.3
+- [ ] Headers appear in the correct arc sequence (Landscape -> Shifts -> Positioning -> Implications)
+- [ ] No `##` headers exist outside the 4 arc elements
+
+If this gate fails: STOP. Do NOT rename sections to fix. REWRITE using the template from Step 4.1.3.
+The content was generated for the wrong structure and cannot be repaired by renaming.
 
 **Quality gates:**
 - [ ] Word count: 1,450-1,900 words
@@ -321,7 +342,7 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Stats grid labels match project language (DE/EN)
 - [ ] **German umlaut check (if `de`):** Body text contains ZERO instances of ASCII fallbacks (fuer, ueber, Aenderung, Uebersicht, etc.) -- all must use ä, ö, ü, ß
 
-**If any gate fails, fix it now before proceeding to Step 4.1.5.** Common failure modes and fixes:
+**If any gate fails, fix it now before proceeding to Step 4.1.6.** Common failure modes and fixes:
 - **Word count too low:** Identify the thinnest arc element and add evidence-grounded depth. Do not pad with generic filler -- add another finding citation with analysis, or apply an unused narrative technique.
 - **Word count too high:** Trim redundant transition phrases or duplicated points across elements. Preserve all citations and wikilinks during trimming.
 - **Wikilinks below 40:** Check which loaded entities have no wikilinks yet. Add references where they naturally support claims.
@@ -329,7 +350,7 @@ stats_claims: {count from 10-claims/data/}
 - **Finding citations below 8:** Review your loaded findings list. Find findings you haven't cited and identify where in the narrative they provide supporting evidence.
 - **Stats grid values mismatch frontmatter:** Copy the exact integer values from the frontmatter into the HTML grid. They must be identical.
 
-### Step 4.1.5: Write Output
+### Step 4.1.6: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
@@ -341,7 +362,7 @@ stats_claims: {count from 10-claims/data/}
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.1.3)
+- content: Complete insight summary with frontmatter (from Step 4.1.4)
 
 **Verification:**
 ```bash

@@ -78,7 +78,96 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Before proceeding:** Confirm you have all 6 integer counts stored. These exact values must appear in both the YAML frontmatter `stats_*` fields AND the inline HTML stats grid. Any mismatch between frontmatter and grid will fail validation.
 
-### Step 4.1.3: Extended Thinking Transformation
+### Step 4.1.3: OUTPUT TEMPLATE
+
+**CRITICAL: Read this template BEFORE any extended thinking. This is the EXACT structure you must produce.**
+
+**Rule: EXACTLY 4 `##` headers. No creative alternatives. No additional sections. No renaming.**
+
+**Instruction: Fill in each section in order. Do NOT reorganize, rename, or add sections.**
+
+**English headers:**
+- `## Signals: Early Indicators`
+- `## Scenarios: Future States`
+- `## Strategies: Adaptive Approaches`
+- `## Decisions: Action Framework`
+
+**German headers (if `language: de`):**
+- `## Signale: Frühindikatoren`
+- `## Szenarien: Zukunftsbilder`
+- `## Strategien: Adaptive Ansätze`
+- `## Entscheidungen: Handlungsrahmen`
+
+**Structure:**
+```markdown
+---
+title: "{Arc-Specific Compelling Title}"
+subtitle: "{Research Question}"
+arc_id: "strategic-foresight"
+arc_display_name: "Strategic Foresight"
+word_count: {1450-1900}
+date_created: "{ISO 8601}"
+stats_syntheses: {count from 12-synthesis/data/}
+stats_megatrends: {count from 06-megatrends/data/}
+stats_trends: {count from 11-trends/data/}
+stats_concepts: {count from 05-domain-concepts/data/}
+stats_findings: {count from 04-findings/data/}
+stats_claims: {count from 10-claims/data/}
+---
+
+# {Arc-Specific Title}
+
+*{Research Question subtitle}*
+
+{Opening paragraph with narrative hook}
+
+<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
+    <div style="font-size:0.82em; color:#666;">Megatrends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
+    <div style="font-size:0.82em; color:#666;">Trends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
+  </div>
+</div>
+
+---
+
+## Signals: Early Indicators
+
+{350-450 words with evidence grounding}
+
+## Scenarios: Future States
+
+{350-450 words with evidence grounding}
+
+## Strategies: Adaptive Approaches
+
+{350-450 words with evidence grounding}
+
+## Decisions: Action Framework
+
+{350-450 words with evidence grounding}
+```
+
+### Step 4.1.4: Extended Thinking Sub-steps
 
 **This is the most cognitively demanding step.** Follow the sub-steps below in sequence. Do not skip ahead -- each sub-step produces an intermediate reasoning artifact that the next sub-step depends on.
 
@@ -201,78 +290,22 @@ Now assemble all components into the final structure. Before writing, verify you
 - [ ] All 4 arc element sections (from Sub-step D)
 - [ ] Closing sentence in the Decisions section
 
-Assemble using this exact structure -- pay careful attention to the frontmatter field names and the stats grid HTML placement:
+Assemble all components into the final document, using the exact template from Step 4.1.3. Pay careful attention to the frontmatter field names and the stats grid HTML placement.
 
-**Structure:**
-```markdown
----
-title: "{Arc-Specific Compelling Title}"
-subtitle: "{Research Question}"
-arc_id: "strategic-foresight"
-arc_display_name: "Strategic Foresight"
-word_count: {1450-1900}
-date_created: "{ISO 8601}"
-stats_syntheses: {count from 12-synthesis/data/}
-stats_megatrends: {count from 06-megatrends/data/}
-stats_trends: {count from 11-trends/data/}
-stats_concepts: {count from 05-domain-concepts/data/}
-stats_findings: {count from 04-findings/data/}
-stats_claims: {count from 10-claims/data/}
----
+**Now fill in the template from Step 4.1.3. Write each section in sequence. Do NOT deviate from the template structure.**
 
-# {Arc-Specific Title}
+### Step 4.1.5: Validate Output
 
-*{Research Question subtitle}*
+**HARD STRUCTURAL GATE (check FIRST -- blocks all other gates):**
 
-{Opening paragraph with narrative hook}
+Count the `##` headers in the narrative body (below frontmatter):
+- [ ] EXACTLY 4 `##` headers (not more, not fewer)
+- [ ] Headers match the arc's exact element names from the template in Step 4.1.3
+- [ ] Headers appear in the correct arc sequence (Signals → Scenarios → Strategies → Decisions)
+- [ ] No `##` headers exist outside the 4 arc elements
 
-<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
-    <div style="font-size:0.82em; color:#666;">Megatrends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
-    <div style="font-size:0.82em; color:#666;">Trends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
-  </div>
-</div>
-
----
-
-## Signals: Early Indicators
-
-{350-450 words with evidence grounding}
-
-## Scenarios: Future States
-
-{350-450 words with evidence grounding}
-
-## Strategies: Adaptive Approaches
-
-{350-450 words with evidence grounding}
-
-## Decisions: Action Framework
-
-{350-450 words with evidence grounding}
-```
-
-### Step 4.1.4: Validate Output
+If this gate fails: STOP. Do NOT rename sections to fix. REWRITE using the template from Step 4.1.3.
+The content was generated for the wrong structure and cannot be repaired by renaming.
 
 **Before checking the gates below, re-read your complete output and ask yourself these diagnostic questions:**
 
@@ -306,7 +339,7 @@ stats_claims: {count from 10-claims/data/}
 | Scenarios not divergent | Axes too similar | Revisit megatrend selection in Sub-step B; choose axes with higher orthogonality |
 | Stats mismatch | Frontmatter and grid created independently | Copy exact integer values from Step 4.1.2 into both locations |
 
-### Step 4.1.5: Write Output
+### Step 4.1.6: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
@@ -315,7 +348,7 @@ stats_claims: {count from 10-claims/data/}
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.1.3)
+- content: Complete insight summary with frontmatter (from Step 4.1.4)
 
 **Verification:**
 ```bash

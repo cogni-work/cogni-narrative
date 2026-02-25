@@ -43,7 +43,7 @@
 
 **Implementation:** Use Glob + Read to load entity files, parse frontmatter.
 
-**After loading, take stock:** Mentally catalog what you now have available. Which findings are strongest? Which trends have the most narrative potential? Which concepts need to be woven in as precise vocabulary? This inventory directly feeds the transformation in Step 4.1.3.
+**After loading, take stock:** Mentally catalog what you now have available. Which findings are strongest? Which trends have the most narrative potential? Which concepts need to be woven in as precise vocabulary? This inventory directly feeds the transformation in Step 4.1.4.
 
 ### Step 4.1.2: Count Entity Files for Stats Grid
 
@@ -63,9 +63,98 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
 
-**Checkpoint:** Verify all 6 counts are integers (not empty strings). If any directory is missing or empty, the count should be 0, not omitted. These exact integers must appear both in the YAML frontmatter AND in the HTML stats grid -- any mismatch is a validation failure in Step 4.1.4.
+**Checkpoint:** Verify all 6 counts are integers (not empty strings). If any directory is missing or empty, the count should be 0, not omitted. These exact integers must appear both in the YAML frontmatter AND in the HTML stats grid -- any mismatch is a validation failure in Step 4.1.5.
 
-### Step 4.1.3: Extended Thinking Transformation
+### Step 4.1.3: OUTPUT TEMPLATE
+
+**CRITICAL: Read this template BEFORE any extended thinking. This is the EXACT structure you must produce.**
+
+**Rule: EXACTLY 4 `##` headers. No creative alternatives. No additional sections. No renaming.**
+
+**Instruction: Fill in each section in order. Do NOT reorganize, rename, or add sections.**
+
+**English headers:**
+- `## What's Emerging: Technology Horizon`
+- `## What's Converging: Integration Points`
+- `## What's Possible: Application Scenarios`
+- `## What's Required: Capability Development`
+
+**German headers (if `language: de`):**
+- `## Was Entsteht: Technologie-Horizont`
+- `## Was Konvergiert: Integrationspunkte`
+- `## Was Möglich Ist: Anwendungsszenarien`
+- `## Was Erforderlich Ist: Kompetenzentwicklung`
+
+**Structure:**
+```markdown
+---
+title: "{Arc-Specific Compelling Title}"
+subtitle: "{Research Question}"
+arc_id: "technology-futures"
+arc_display_name: "Technology Futures"
+word_count: {1450-1900}
+date_created: "{ISO 8601}"
+stats_syntheses: {count from 12-synthesis/data/}
+stats_megatrends: {count from 06-megatrends/data/}
+stats_trends: {count from 11-trends/data/}
+stats_concepts: {count from 05-domain-concepts/data/}
+stats_findings: {count from 04-findings/data/}
+stats_claims: {count from 10-claims/data/}
+---
+
+# {Arc-Specific Title}
+
+*{Research Question subtitle}*
+
+{Opening paragraph with narrative hook}
+
+<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
+    <div style="font-size:0.82em; color:#666;">Megatrends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
+    <div style="font-size:0.82em; color:#666;">Trends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
+  </div>
+</div>
+
+---
+
+## What's Emerging: Technology Horizon
+
+{350-450 words with evidence grounding}
+
+## What's Converging: Integration Points
+
+{350-450 words with evidence grounding}
+
+## What's Possible: Application Scenarios
+
+{350-450 words with evidence grounding}
+
+## What's Required: Capability Development
+
+{350-450 words with evidence grounding}
+```
+
+### Step 4.1.4: Extended Thinking Sub-steps
 
 This is the most cognitively demanding step. Follow this decomposed reasoning sequence exactly. Do not skip sub-steps or combine them -- each one produces an intermediate output that the next sub-step depends on.
 
@@ -167,81 +256,25 @@ Before finalizing, review the complete draft against these quality checks:
 
 ---
 
-**Structure:**
-```markdown
----
-title: "{Arc-Specific Compelling Title}"
-subtitle: "{Research Question}"
-arc_id: "technology-futures"
-arc_display_name: "Technology Futures"
-word_count: {1450-1900}
-date_created: "{ISO 8601}"
-stats_syntheses: {count from 12-synthesis/data/}
-stats_megatrends: {count from 06-megatrends/data/}
-stats_trends: {count from 11-trends/data/}
-stats_concepts: {count from 05-domain-concepts/data/}
-stats_findings: {count from 04-findings/data/}
-stats_claims: {count from 10-claims/data/}
----
+**Now fill in the template from Step 4.1.3. Write each section in sequence. Do NOT deviate from the template structure.**
 
-# {Arc-Specific Title}
-
-*{Research Question subtitle}*
-
-{Opening paragraph with narrative hook}
-
-<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
-    <div style="font-size:0.82em; color:#666;">Megatrends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
-    <div style="font-size:0.82em; color:#666;">Trends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
-  </div>
-</div>
-
----
-
-## What's Emerging: Technology Horizon
-
-{350-450 words with evidence grounding}
-
-## What's Converging: Integration Points
-
-{350-450 words with evidence grounding}
-
-## What's Possible: Application Scenarios
-
-{350-450 words with evidence grounding}
-
-## What's Required: Capability Development
-
-{350-450 words with evidence grounding}
-```
-
-### Step 4.1.4: Validate Output
+### Step 4.1.5: Validate Output
 
 **Before checking the gates, think about common failure modes for this arc:**
 - Technology-futures narratives often run LONG because of the rich Tier 4 context. If over 1,900 words, tighten the weakest element first (the one with the fewest strong findings).
 - Wikilink counts often fall short in the "What's Required" element because it tends toward prescriptive language rather than evidence-grounded claims. If under target, add concept and trend wikilinks to capability statements.
 - The arc progression (Emerging -> Converging -> Possible -> Required) must feel like a JOURNEY, not 4 independent essays. If validation reveals abrupt transitions, revisit the closing sentences of each element (see Sub-step E, point 6).
+
+**HARD STRUCTURAL GATE (check FIRST -- blocks all other gates):**
+
+Count the `##` headers in the narrative body (below frontmatter):
+- [ ] EXACTLY 4 `##` headers (not more, not fewer)
+- [ ] Headers match the arc's exact element names from the template in Step 4.1.3
+- [ ] Headers appear in the correct arc sequence (What's Emerging → What's Converging → What's Possible → What's Required)
+- [ ] No `##` headers exist outside the 4 arc elements
+
+If this gate fails: STOP. Do NOT rename sections to fix. REWRITE using the template from Step 4.1.3.
+The content was generated for the wrong structure and cannot be repaired by renaming.
 
 **Quality gates:**
 - [ ] Word count: 1,450-1,900 words
@@ -258,7 +291,7 @@ stats_claims: {count from 10-claims/data/}
 
 **If any gate fails:** Identify which sub-step (A-G) produced the defect, return to that sub-step's reasoning, and fix the specific issue. Do not regenerate the entire document -- make targeted repairs.
 
-### Step 4.1.5: Write Output
+### Step 4.1.6: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
@@ -271,7 +304,7 @@ stats_claims: {count from 10-claims/data/}
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.1.3)
+- content: Complete insight summary with frontmatter (from Step 4.1.4)
 
 **Verification:**
 ```bash

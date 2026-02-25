@@ -64,7 +64,96 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Language-aware labels:** Check `project_language` from sprint-log.json. Use German labels (Dimensionssynthesen, Konzepte, Erkenntnisse, Aussagen) for `de`, English labels (Dimension Syntheses, Concepts, Findings, Claims) for `en`.
 
-### Step 4.1.3: Extended Thinking Transformation
+### Step 4.1.3: OUTPUT TEMPLATE
+
+**CRITICAL: Read this template BEFORE any extended thinking. This is the EXACT structure you must produce.**
+
+**Rule: EXACTLY 4 `##` headers. No creative alternatives. No additional sections. No renaming.**
+
+**Instruction: Fill in each section in order. Do NOT reorganize, rename, or add sections.**
+
+**English headers:**
+- `## Forces: Transformation Drivers`
+- `## Friction: Barriers to Change`
+- `## Evolution: Pathway Forward`
+- `## Leadership: Strategic Imperatives`
+
+**German headers (if `language: de`):**
+- `## Kräfte: Makro-Treiber`
+- `## Reibung: Widerstandspunkte`
+- `## Evolution: Strukturelle Veränderungen`
+- `## Führung: Positionierungsstrategien`
+
+**Structure:**
+```markdown
+---
+title: "{Arc-Specific Compelling Title}"
+subtitle: "{Research Question}"
+arc_id: "industry-transformation"
+arc_display_name: "Industry Transformation"
+word_count: {1450-1900}
+date_created: "{ISO 8601}"
+stats_syntheses: {count from 12-synthesis/data/}
+stats_megatrends: {count from 06-megatrends/data/}
+stats_trends: {count from 11-trends/data/}
+stats_concepts: {count from 05-domain-concepts/data/}
+stats_findings: {count from 04-findings/data/}
+stats_claims: {count from 10-claims/data/}
+---
+
+# {Arc-Specific Title}
+
+*{Research Question subtitle}*
+
+{Opening paragraph with narrative hook}
+
+<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
+    <div style="font-size:0.82em; color:#666;">Megatrends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
+    <div style="font-size:0.82em; color:#666;">Trends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
+  </div>
+</div>
+
+---
+
+## Forces: Transformation Drivers
+
+{350-450 words with evidence grounding}
+
+## Friction: Barriers to Change
+
+{350-450 words with evidence grounding}
+
+## Evolution: Pathway Forward
+
+{350-450 words with evidence grounding}
+
+## Leadership: Strategic Imperatives
+
+{350-450 words with evidence grounding}
+```
+
+### Step 4.1.4: Extended Thinking Sub-steps
 
 **This is the most cognitively demanding step.** Before generating any output, complete the following reasoning sequence in extended thinking. Do NOT skip any sub-step -- each one builds the mental model needed for high-quality output.
 
@@ -139,11 +228,11 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 **Now write the complete insight-summary.md.** Follow this exact sequence:
 
-1. Write frontmatter (use template below, fill all `stats_*` fields from Step 4.1.2)
+1. Write frontmatter (use template from Step 4.1.3, fill all `stats_*` fields from Step 4.1.2)
 2. Write the H1 title (from Sub-step C)
 3. Write the subtitle (research question, italicized)
 4. Write the hook paragraph (150-200 words, from Sub-step C)
-5. Insert the stats grid HTML (use template below, fill counts from Step 4.1.2)
+5. Insert the stats grid HTML (use template from Step 4.1.3, fill counts from Step 4.1.2)
 6. Insert horizontal rule (`---`)
 7. Write **Forces: Transformation Drivers** (350-450 words)
    - Open with the dominant macro force -- frame it as structural and irreversible
@@ -176,78 +265,22 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 - Am I maintaining the transformation narrative (forces -> friction -> evolution -> leadership)?
 - Am I distributing wikilinks across different entity types?
 
-**Structure:**
-```markdown
----
-title: "{Arc-Specific Compelling Title}"
-subtitle: "{Research Question}"
-arc_id: "industry-transformation"
-arc_display_name: "Industry Transformation"
-word_count: {1450-1900}
-date_created: "{ISO 8601}"
-stats_syntheses: {count from 12-synthesis/data/}
-stats_megatrends: {count from 06-megatrends/data/}
-stats_trends: {count from 11-trends/data/}
-stats_concepts: {count from 05-domain-concepts/data/}
-stats_findings: {count from 04-findings/data/}
-stats_claims: {count from 10-claims/data/}
----
+**Now fill in the template from Step 4.1.3. Write each section in sequence. Do NOT deviate from the template structure.**
 
-# {Arc-Specific Title}
-
-*{Research Question subtitle}*
-
-{Opening paragraph with narrative hook}
-
-<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
-    <div style="font-size:0.82em; color:#666;">Megatrends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
-    <div style="font-size:0.82em; color:#666;">Trends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
-  </div>
-</div>
-
----
-
-## Forces: Transformation Drivers
-
-{350-450 words with evidence grounding}
-
-## Friction: Barriers to Change
-
-{350-450 words with evidence grounding}
-
-## Evolution: Pathway Forward
-
-{350-450 words with evidence grounding}
-
-## Leadership: Strategic Imperatives
-
-{350-450 words with evidence grounding}
-```
-
-### Step 4.1.4: Validate Output
+### Step 4.1.5: Validate Output
 
 **Before declaring this step complete, systematically check every gate.** Do not batch-assess -- check each gate individually and note pass/fail.
+
+**HARD STRUCTURAL GATE (check FIRST -- blocks all other gates):**
+
+Count the `##` headers in the narrative body (below frontmatter):
+- [ ] EXACTLY 4 `##` headers (not more, not fewer)
+- [ ] Headers match the arc's exact element names from the template in Step 4.1.3
+- [ ] Headers appear in the correct arc sequence (Forces → Friction → Evolution → Leadership)
+- [ ] No `##` headers exist outside the 4 arc elements
+
+If this gate fails: STOP. Do NOT rename sections to fix. REWRITE using the template from Step 4.1.3.
+The content was generated for the wrong structure and cannot be repaired by renaming.
 
 **Quality gates:**
 - [ ] Word count: 1,450-1,900 words
@@ -262,7 +295,7 @@ stats_claims: {count from 10-claims/data/}
 - [ ] Stats grid labels match project language (DE/EN)
 - [ ] **German umlaut check (if `de`):** Body text contains ZERO instances of ASCII fallbacks (fuer, ueber, Aenderung, Uebersicht, etc.) -- all must use ä, ö, ü, ß
 
-**If any gate fails:** Identify the specific failure, determine the minimum edit to fix it, apply the fix, then re-check all gates. Do not proceed to Step 4.1.5 until all gates pass.
+**If any gate fails:** Identify the specific failure, determine the minimum edit to fix it, apply the fix, then re-check all gates. Do not proceed to Step 4.1.6 until all gates pass.
 
 **Common failure modes to watch for:**
 - Word count under 1,450: Usually caused by thin Evolution or Leadership sections -- expand with additional evidence and analysis
@@ -270,14 +303,14 @@ stats_claims: {count from 10-claims/data/}
 - Finding citations under 8: Review loaded findings and add citations to unsupported claims
 - Stats grid mismatch: Re-verify counts from Step 4.1.2 against both frontmatter and HTML values
 
-### Step 4.1.5: Write Output
+### Step 4.1.6: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.1.3)
+- content: Complete insight summary with frontmatter (from Step 4.1.4)
 
 **Verification:**
 ```bash

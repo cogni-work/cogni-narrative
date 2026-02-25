@@ -246,29 +246,28 @@ TodoWrite:
 TodoWrite:
 - [in_progress] Phase 3: Load Arc Patterns
   - [ ] 3.1: Read arc-definition.md
-  - [ ] 3.2: Read 4 element pattern files
-  - [ ] 3.3: Read techniques-overview.md
+  - [ ] 3.2: Read techniques-overview.md
 ```
 
-⛔ **MANDATORY -- Read ALL of the following before proceeding to Phase 4:**
+⛔ **MANDATORY -- Read the following before proceeding to Phase 4:**
 
 1. `references/story-arc/{arc_id}/arc-definition.md` -- element definitions, word targets, quality gates
-2. `references/story-arc/{arc_id}/{element}-patterns.md` -- transformation patterns per element (4 files)
-3. `references/narrative-techniques/techniques-overview.md` -- narrative techniques reference
+2. `references/narrative-techniques/techniques-overview.md` -- narrative techniques reference
+
+**Note:** The 4 individual element pattern files (`{element}-patterns.md`) are NOT loaded here. Their guidance is already embedded in the arc-specific Phase 4b workflow file, which is loaded at the start of Phase 4. Loading both would create ~1,500 lines of overlapping reference material that dilutes rather than reinforces the structural constraint.
 
 **Content-based checkpoint -- prove pattern comprehension:**
 
-> After reading all pattern files, answer from loaded content:
+> After reading the reference files, answer from loaded content:
 > 1. Name all 4 arc elements in order for the selected arc.
 > 2. What is the word target for each element?
 > 3. Which narrative techniques apply to which elements? (consult the technique-arc matrix)
 >
-> If unable to answer any question, re-read the pattern files. Do NOT proceed to Phase 4 without this knowledge.
+> If unable to answer any question, re-read the reference files. Do NOT proceed to Phase 4 without this knowledge.
 
 **Self-verification:**
 
 - [ ] Arc definition file read for `{arc_id}`? (YES/NO)
-- [ ] All 4 element pattern files read? (YES/NO)
 - [ ] Techniques overview read? (YES/NO)
 - [ ] Can name all 4 elements with word targets from memory? (YES/NO)
 
@@ -281,7 +280,7 @@ TodoWrite:
 ### Phase 4: Narrative Transformation
 
 **Phase entry gate:**
-> Verify Phase 3 completed: arc-definition, all 4 element pattern files, and techniques-overview must have been read.
+> Verify Phase 3 completed: arc-definition and techniques-overview must have been read.
 > Quick check: Can you name all 4 arc elements and their word targets without re-reading? If NO: return to Phase 3.
 
 **Mark todo:** `Phase 4: Narrative Transformation` → `[in_progress]`
@@ -301,6 +300,13 @@ TodoWrite:
 **Read:** `references/phase-workflows/phase-4b-synthesis-{arc_id}.md` (if exists)
 
 This file contains detailed sub-steps, extended thinking prompts, and quality gates specific to the selected arc. If the file exists, follow its workflow instead of the summary below.
+
+**STRUCTURAL CONSTRAINT (all arcs, all languages):**
+
+The output MUST contain EXACTLY 4 `##` section headers matching the selected arc's
+element names. No creative alternatives, no additional `##` sections, no renaming.
+See `references/language-templates.md` section "Insight Summary (Arc Element Headers)"
+for the exact header text per arc and language.
 
 **Summary workflow (use when no arc-specific file exists):**
 
@@ -345,12 +351,21 @@ Assemble the full narrative:
 
 **Mark todo:** `Phase 5: Validation` → `[in_progress]`
 
-All quality gates must pass:
+All quality gates must pass. Check in priority order -- stop and fix before continuing if any gate fails.
 
-**Critical gates (narrative unusable without these):**
+**HARD STRUCTURAL GATE (check FIRST -- blocks all other gates):**
+
+- [ ] EXACTLY 4 `##` headers in narrative body (below frontmatter)
+- [ ] Headers match arc's exact element names from `references/language-templates.md` (language-specific)
+- [ ] Headers in correct arc sequence
+- [ ] No extra `##` headers outside the 4 arc elements
+
+If this gate fails: Return to Phase 4. Do NOT rename sections to fix. REWRITE using the template.
+The content was generated for the wrong structure and cannot be repaired by renaming.
+
+**Critical gates (check after structural gate passes):**
 
 - [ ] Total word count: 1,450-1,900
-- [ ] All 4 arc elements present with arc-specific headers
 - [ ] Title is arc-specific (not generic "Insight Summary")
 - [ ] Hook present (150-200 words)
 
@@ -504,7 +519,6 @@ On any HALT, return error JSON:
 |------|---------|-----------|
 | `references/story-arc/arc-registry.md` | Arc index, detection algorithm, extension guide | Phase 2 |
 | `references/story-arc/{arc_id}/arc-definition.md` | Element definitions, word targets, quality gates | Phase 3 |
-| `references/story-arc/{arc_id}/*-patterns.md` | Transformation patterns per element (4 files) | Phase 3 |
 | `references/narrative-techniques/techniques-overview.md` | 8 narrative techniques with arc application matrix | Phase 3 |
 | `references/phase-workflows/phase-4b-synthesis-{arc_id}.md` | Arc-specific transformation workflow | Phase 4 |
 | `references/language-templates.md` | Localized headers for en/de | Phase 4 (if `de`) |

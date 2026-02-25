@@ -43,7 +43,7 @@
 > 4. Which findings contain *cost data, risk quantification, or financial impact*? These feed **Why Pay**.
 > 5. Which sources are the most authoritative (highest reliability_score)? Prioritize these for high-impact citations.
 >
-> Hold this mental map -- you will use it in Step 4.1.3 to select evidence for each arc element.
+> Hold this mental map -- you will use it in Step 4.1.4 to select evidence for each arc element.
 
 ### Step 4.1.2: Count Entity Files for Stats Grid
 
@@ -65,7 +65,96 @@ stats_claims=$(ls 10-claims/data/*.md 2>/dev/null | wc -l | tr -d ' ')
 
 > **Think:** Verify that all 6 counts are integers (not empty strings). If any directory is missing or empty, the count should be 0, not blank. These exact numbers will appear in both the YAML frontmatter AND the HTML stats grid -- they must match exactly.
 
-### Step 4.1.3: Extended Thinking Transformation
+### Step 4.1.3: OUTPUT TEMPLATE
+
+**CRITICAL: Read this template BEFORE any extended thinking. This is the EXACT structure you must produce.**
+
+**Rule: EXACTLY 4 `##` headers. No creative alternatives. No additional sections. No renaming.**
+
+**Instruction: Fill in each section in order. Do NOT reorganize, rename, or add sections.**
+
+**English headers:**
+- `## Why Change: Unconsidered Needs`
+- `## Why Now: Forcing Functions`
+- `## Why You: Unique Positioning`
+- `## Why Pay: ROI Justification`
+
+**German headers (if `language: de`):**
+- `## Warum Wandel: Unerkannte Handlungsbedarfe`
+- `## Warum Jetzt: Handlungsdruck`
+- `## Warum Sie: Einzigartige Positionierung`
+- `## Warum Investieren: ROI-Begründung`
+
+**Structure:**
+```markdown
+---
+title: "{Arc-Specific Compelling Title}"
+subtitle: "{Research Question}"
+arc_id: "corporate-visions"
+arc_display_name: "Corporate Visions"
+word_count: {1450-1900}
+date_created: "{ISO 8601}"
+stats_syntheses: {count from 12-synthesis/data/}
+stats_megatrends: {count from 06-megatrends/data/}
+stats_trends: {count from 11-trends/data/}
+stats_concepts: {count from 05-domain-concepts/data/}
+stats_findings: {count from 04-findings/data/}
+stats_claims: {count from 10-claims/data/}
+---
+
+# {Arc-Specific Title}
+
+*{Research Question subtitle}*
+
+{Opening paragraph with narrative hook}
+
+<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
+    <div style="font-size:0.82em; color:#666;">Megatrends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
+    <div style="font-size:0.82em; color:#666;">Trends</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
+  </div>
+  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
+    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
+    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
+  </div>
+</div>
+
+---
+
+## Why Change: Unconsidered Needs
+
+{350-450 words with evidence grounding}
+
+## Why Now: Forcing Functions
+
+{350-450 words with evidence grounding}
+
+## Why You: Unique Positioning
+
+{350-450 words with evidence grounding}
+
+## Why Pay: ROI Justification
+
+{350-450 words with evidence grounding}
+```
+
+### Step 4.1.4: Extended Thinking Sub-steps
 
 This is the most cognitively demanding step. You are transforming a 400-600 word analytical synthesis into a 1,450-1,900 word executive narrative. This is NOT simply adding words -- it is a rhetorical transformation that reframes evidence through the Corporate Visions persuasion framework.
 
@@ -217,78 +306,9 @@ Before finalizing, verify the rhetorical flow across all four elements:
 > - **Citations:** Count all `<sup>[N](source.md)</sup>` references. Target: >= 8 finding citations. If under 8, identify unsupported claims and add citations from your evidence inventory (Step 4.1.1).
 > - **Element word counts:** Why Change 400-500, Why Now 300-400, Why You 400-500, Why Pay 200-300, Hook 150-200. Each must be within target (+/-50 words).
 
----
+**Now fill in the template from Step 4.1.3. Write each section in sequence. Do NOT deviate from the template structure.**
 
-**Structure:**
-```markdown
----
-title: "{Arc-Specific Compelling Title}"
-subtitle: "{Research Question}"
-arc_id: "corporate-visions"
-arc_display_name: "Corporate Visions"
-word_count: {1450-1900}
-date_created: "{ISO 8601}"
-stats_syntheses: {count from 12-synthesis/data/}
-stats_megatrends: {count from 06-megatrends/data/}
-stats_trends: {count from 11-trends/data/}
-stats_concepts: {count from 05-domain-concepts/data/}
-stats_findings: {count from 04-findings/data/}
-stats_claims: {count from 10-claims/data/}
----
-
-# {Arc-Specific Title}
-
-*{Research Question subtitle}*
-
-{Opening paragraph with narrative hook}
-
-<div class="stats-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:20px 0;">
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_syntheses}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Dimensionssynthesen | EN: Dimension Syntheses}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_megatrends}</div>
-    <div style="font-size:0.82em; color:#666;">Megatrends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_trends}</div>
-    <div style="font-size:0.82em; color:#666;">Trends</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_concepts}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Konzepte | EN: Concepts}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_findings}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Erkenntnisse | EN: Findings}</div>
-  </div>
-  <div style="background:#f5f5f5; padding:14px 10px; border-radius:8px; text-align:center;">
-    <div style="font-size:1.6em; font-weight:bold; color:#1a1a1a;">{stats_claims}</div>
-    <div style="font-size:0.82em; color:#666;">{DE: Aussagen | EN: Claims}</div>
-  </div>
-</div>
-
----
-
-## Why Change: Unconsidered Needs
-
-{350-450 words with evidence grounding}
-
-## Why Now: Forcing Functions
-
-{350-450 words with evidence grounding}
-
-## Why You: Unique Positioning
-
-{350-450 words with evidence grounding}
-
-## Why Pay: ROI Justification
-
-{350-450 words with evidence grounding}
-```
-
-### Step 4.1.4: Validate Output
+### Step 4.1.5: Validate Output
 
 **Before checking the list, reason about overall quality:**
 
@@ -298,6 +318,17 @@ stats_claims: {count from 10-claims/data/}
 > 3. Is there a single, clear "so what?" that the reader walks away with?
 >
 > If the answer to any of these is "no," identify the weakest element and revise it before proceeding to the checklist.
+
+**HARD STRUCTURAL GATE (check FIRST -- blocks all other gates):**
+
+Count the `##` headers in the narrative body (below frontmatter):
+- [ ] EXACTLY 4 `##` headers (not more, not fewer)
+- [ ] Headers match the arc's exact element names from the template in Step 4.1.3
+- [ ] Headers appear in the correct arc sequence (Why Change → Why Now → Why You → Why Pay)
+- [ ] No `##` headers exist outside the 4 arc elements
+
+If this gate fails: STOP. Do NOT rename sections to fix. REWRITE using the template from Step 4.1.3.
+The content was generated for the wrong structure and cannot be repaired by renaming.
 
 **Quality gates (check in this priority order -- stop and fix before continuing if any critical gate fails):**
 
@@ -329,7 +360,7 @@ stats_claims: {count from 10-claims/data/}
 >
 > After fixing, re-validate ALL gates (not just the failed one) to ensure the fix did not break something else.
 
-### Step 4.1.5: Write Output
+### Step 4.1.6: Write Output
 
 **CRITICAL:** Write to `insight-summary.md` at project root (NOT in 12-synthesis/).
 
@@ -338,7 +369,7 @@ stats_claims: {count from 10-claims/data/}
 **Use Write tool with explicit instruction:**
 - Call Write tool
 - file_path: `insight-summary.md` (relative to project root)
-- content: Complete insight summary with frontmatter (from Step 4.1.3)
+- content: Complete insight summary with frontmatter (from Step 4.1.4)
 
 **Verification:**
 ```bash
