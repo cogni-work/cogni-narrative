@@ -8,5 +8,8 @@
   },
   "repository": "https://github.com/cogni-work/cogni-narrative",
   "license": "MIT",
-  "keywords": ["narrative", "story-arc", "synthesis", "executive-writing", "corporate-visions", "strategic-foresight"]
+  "keywords": ["narrative", "story-arc", "synthesis", "executive-writing", "corporate-visions", "strategic-foresight"],
+  "skills": ["./skills/narrative"],
+  "agents": ["./agents/narrative-writer.md"],
+  "commands": ["./commands/narrative.md"]
 }
