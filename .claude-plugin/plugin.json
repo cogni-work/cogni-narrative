@@ -3,11 +3,10 @@
   "version": "1.4.2",
   "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks.",
   "author": {
-    "name": "cogni-work",
-    "url": "https://github.com/cogni-work"
+    "name": "Stephan de Haas",
+    "email": "stephan@cogni-work.ai"
   },
-  "repository": "https://github.com/cogni-work/cogni-narrative",
-  "license": "MIT",
+  "license": "CC-BY-NC-SA-4.0",
   "keywords": ["narrative", "story-arc", "synthesis", "executive-writing", "corporate-visions", "strategic-foresight"],
   "skills": ["./skills/narrative"],
   "agents": ["./agents/narrative-writer.md"],
