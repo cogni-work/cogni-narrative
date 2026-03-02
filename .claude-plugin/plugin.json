@@ -1,6 +1,6 @@
 {
   "name": "cogni-narrative",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 6 story arc frameworks including TIPS-native trend panorama. Includes narrative review scoring and derivative format adaptation.",
   "author": {
     "name": "Stephan de Haas",
@@ -15,7 +15,8 @@
   ],
   "agents": [
     "./agents/narrative-writer.md",
-    "./agents/narrative-reviewer.md"
+    "./agents/narrative-reviewer.md",
+    "./agents/narrative-adapter.md"
   ],
   "commands": [
     "./commands/narrative.md",
