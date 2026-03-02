@@ -156,13 +156,13 @@ Total Cost of Inaction =
 
 ## Application by Arc Element
 
-| Technique | Corporate Visions | Tech Futures | Competitive Intel | Strategic Foresight | Industry Transform |
-|-----------|:-:|:-:|:-:|:-:|:-:|
-| Pyramid Principle | All | All | All | All | All |
-| PSB | Why Change | - | Landscape | - | Forces |
-| IS-DOES-MEANS | Why You | What's Required | Positioning | Strategies | Leadership |
-| Number Plays | All | All | All | All | All |
-| Forcing Functions | Why Now | What's Required | Shifts | Signals | Friction |
-| Contrast Structure | Why Change | What's Emerging | Shifts | Scenarios | Forces |
-| You-Phrasing | Why You | What's Possible | Positioning | Strategies | Leadership |
-| Compound Impact | Why Pay | What's Required | Implications | Decisions | Leadership |
+| Technique | Corporate Visions | Tech Futures | Competitive Intel | Strategic Foresight | Industry Transform | Trend Panorama |
+|-----------|:-:|:-:|:-:|:-:|:-:|:-:|
+| Pyramid Principle | All | All | All | All | All | All |
+| PSB | Why Change | - | Landscape | - | Forces | Forces |
+| IS-DOES-MEANS | Why You | What's Required | Positioning | Strategies | Leadership | Horizons, Foundations |
+| Number Plays | All | All | All | All | All | All |
+| Forcing Functions | Why Now | What's Required | Shifts | Signals | Friction | Forces, Foundations |
+| Contrast Structure | Why Change | What's Emerging | Shifts | Scenarios | Forces | Forces, Impact |
+| You-Phrasing | Why You | What's Possible | Positioning | Strategies | Leadership | Horizons, Foundations |
+| Compound Impact | Why Pay | What's Required | Implications | Decisions | Leadership | Impact, Foundations |

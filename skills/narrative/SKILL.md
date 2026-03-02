@@ -1,13 +1,13 @@
 ---
 name: narrative
-description: "Transform structured content into compelling executive narratives using story arc frameworks. Use when users ask to 'create a narrative', 'write a narrative from', 'transform to story arc', 'apply corporate visions arc', 'generate insight summary', 'narrative transformation', or when other plugins need arc-driven narrative generation from input files."
+description: "Transform structured content into compelling executive narratives using story arc frameworks. Use when users ask to 'create a narrative', 'write a narrative from', 'transform to story arc', 'apply corporate visions arc', 'apply trend panorama arc', 'generate insight summary', 'narrative transformation', 'summarize trends as narrative', 'TIPS trend narrative', or when other plugins need arc-driven narrative generation from input files."
 ---
 
 # Narrative Transformation
 
 ## Purpose
 
-Transform input markdown files into a structured executive narrative (1,450-1,900 words) using one of 5 story arc frameworks. Each arc provides a distinct rhetorical progression -- mapping source evidence to arc elements, applying narrative techniques, and producing a citation-grounded insight summary.
+Transform input markdown files into a structured executive narrative (1,450-1,900 words) using one of 6 story arc frameworks. Each arc provides a distinct rhetorical progression -- mapping source evidence to arc elements, applying narrative techniques, and producing a citation-grounded insight summary.
 
 ## When to Use
 
@@ -236,7 +236,7 @@ TodoWrite:
 
 **Phase entry gate:**
 > Verify Phase 2 completed: `arc_id` must be set to a valid arc identifier.
-> Valid values: `corporate-visions`, `technology-futures`, `competitive-intelligence`, `strategic-foresight`, `industry-transformation`.
+> Valid values: `corporate-visions`, `technology-futures`, `competitive-intelligence`, `strategic-foresight`, `industry-transformation`, `trend-panorama`.
 > If `arc_id` is unset or invalid: STOP. Return to Phase 2.
 
 **Mark todo:** `Phase 3: Load Arc Patterns` → `[in_progress]`
@@ -424,6 +424,7 @@ The content was generated for the wrong structure and cannot be repaired by rena
 | `competitive-intelligence` | Landscape -> Shifts -> Positioning -> Implications | Competitive analysis, threat assessment |
 | `strategic-foresight` | Signals -> Scenarios -> Strategies -> Decisions | Long-range planning, scenario analysis |
 | `industry-transformation` | Forces -> Friction -> Evolution -> Leadership | Industry analysis, regulatory impact |
+| `trend-panorama` | Forces -> Impact -> Horizons -> Foundations (TIPS) | Trend-scout output, TIPS trend reports |
 
 See [references/story-arc/arc-registry.md](references/story-arc/arc-registry.md) for detection signals, word targets, and extension guidelines.
 

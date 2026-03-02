@@ -4,12 +4,24 @@
 
 This registry indexes all available story arcs for the cogni-narrative plugin. Each arc provides a different narrative framework for transforming structured content (research syntheses, analyses, reports) into compelling executive narratives.
 
+## Quick Reference
+
+| # | Arc ID | Elements (Short) | TIPS | Best For | Detection Priority |
+|---|--------|-----------------|------|----------|--------------------|
+| 1 | `corporate-visions` | Change → Now → You → Pay | - | Market research, B2B, sales | Default fallback |
+| 2 | `technology-futures` | Emerging → Converging → Possible → Required | - | Innovation, R&D, tech trends | `content_type: "technology"` |
+| 3 | `competitive-intelligence` | Landscape → Shifts → Positioning → Implications | - | Competitive analysis, threats | `content_type: "competitive"` |
+| 4 | `strategic-foresight` | Signals → Scenarios → Strategies → Decisions | - | Long-range planning, scenarios | `content_type: "foresight"` |
+| 5 | `industry-transformation` | Forces → Friction → Evolution → Leadership | - | Industry analysis, regulation | `content_type: "industry"` |
+| 6 | `trend-panorama` | Forces → Impact → Horizons → Foundations | T→I→P→S | Trend-scout output, TIPS reports | Structural + `"smarter-service"` |
+
 ## Arc Selection Logic
 
 1. **Explicit selection**: Caller specifies `arc_id` directly (highest priority)
-2. **Content type mapping**: Automatic detection based on `content_type` metadata
-3. **Content analysis**: Keyword density analysis of input content
-4. **Fallback default**: corporate-visions
+2. **Structural detection**: Check for arc-specific file signatures (e.g., `trend-scout-output.json`)
+3. **Content type mapping**: Automatic detection based on `content_type` or `research_type` metadata
+4. **Content analysis**: Keyword density analysis of input content
+5. **Fallback default**: corporate-visions
 
 ## Available Story Arcs
 
@@ -153,16 +165,75 @@ This registry indexes all available story arcs for the cogni-narrative plugin. E
 
 ---
 
+### 6. Trend Panorama
+
+**Arc ID:** `trend-panorama`
+**Display Name:** Trend Panorama
+**Elements:** Forces → Impact → Horizons → Foundations (TIPS: T → I → P → S)
+
+**Best For:**
+- Trend-scout output summarization (52 trend candidates)
+- TIPS trend report narratives
+- Multi-horizon trend landscape overviews
+- Industry-specific trend panoramas
+
+**Detection Signals:**
+- `content_type: "trend"` or `"trends"` or `"tips"`
+- `research_type: "smarter-service"` (trend-scout output)
+- `synthesis_format: "TIPS"` in source metadata
+- Structural: presence of `trend-scout-output.json` or `tips-trend-report.md`
+- Keywords (>=12% density): "trend", "horizon", "act", "plan", "observe", "TIPS", "signal intensity", "dimension"
+
+**TIPS Dimension Mapping:**
+- Forces = T (Externe Effekte): economy, regulation, society
+- Impact = I (Digitale Wertetreiber): CX, products, processes
+- Horizons = P (Neue Horizonte): strategy, leadership, governance
+- Foundations = S (Digitales Fundament): culture, workforce, technology
+
+**Horizon Cascade:** Each element applies Act → Plan → Observe progression internally.
+
+**Word Targets:**
+- Hook: 150-200 words
+- Forces: 350-450 words
+- Impact: 350-450 words
+- Horizons: 350-450 words
+- Foundations: 250-350 words
+- **Total:** 1,450-1,900 words
+
+**Definition File:** `story-arc/trend-panorama/arc-definition.md`
+
+---
+
 ## Arc Detection Algorithm
 
 ### Step 1: Explicit Selection
 
 If the caller provides `arc_id` directly, use it without detection.
 
-### Step 2: Content Type Mapping
+### Step 2: Structural Detection (trend-panorama only)
+
+Before content-type mapping, check for structural signals that uniquely identify trend-scout output:
+
+```javascript
+// Check for trend-scout structural signals (highest confidence detection)
+if (fileExists(".metadata/trend-scout-output.json") || fileExists("trend-scout-output.json")) {
+  detected_arc = "trend-panorama"
+  detection_reason = "structural: trend-scout-output.json detected"
+}
+if (fileExists("tips-trend-report.md")) {
+  detected_arc = "trend-panorama"
+  detection_reason = "structural: tips-trend-report.md detected"
+}
+```
+
+### Step 3: Content Type Mapping
 
 ```javascript
 const arcMap = {
+  "trend": "trend-panorama",
+  "trends": "trend-panorama",
+  "tips": "trend-panorama",
+  "smarter-service": "trend-panorama",
   "technology": "technology-futures",
   "competitive": "competitive-intelligence",
   "foresight": "strategic-foresight",
@@ -172,18 +243,25 @@ const arcMap = {
   "generic": "corporate-visions"
 }
 
+// Also check research_type field
+if (research_type === "smarter-service") {
+  detected_arc = "trend-panorama"
+  detection_reason = `research_type="smarter-service"`
+}
+
 if (content_type in arcMap) {
   detected_arc = arcMap[content_type]
   detection_reason = `content_type="${content_type}"`
 }
 ```
 
-### Step 3: Content Analysis (if no content_type match)
+### Step 4: Content Analysis (if no content_type match)
 
 Analyze the input content for keyword density:
 
 ```javascript
 keyword_sets = {
+  "trend-panorama": ["trend", "horizon", "act", "plan", "observe", "TIPS", "signal intensity", "dimension"],
   "technology-futures": ["emerging", "innovation", "capability", "technology", "R&D", "breakthrough"],
   "competitive-intelligence": ["competitor", "market share", "positioning", "differentiation", "threat", "rivalry"],
   "strategic-foresight": ["scenario", "future", "signal", "uncertainty", "planning", "foresight"],
@@ -191,6 +269,7 @@ keyword_sets = {
 }
 
 thresholds = {
+  "trend-panorama": 0.12,
   "technology-futures": 0.15,
   "competitive-intelligence": 0.12,
   "strategic-foresight": 0.10,
@@ -198,7 +277,7 @@ thresholds = {
 }
 ```
 
-### Step 4: Fallback Default
+### Step 5: Fallback Default
 
 ```javascript
 if (!detected_arc) {
@@ -244,20 +323,48 @@ Option 2: {Alternative Arc 1}
 
 ### Adding New Arcs
 
-1. Choose unique arc_id (lowercase, hyphens)
+1. Choose unique `arc_id` (lowercase, hyphens, descriptive)
 2. Create directory: `story-arc/{arc-id}/`
-3. Create 5 files: arc-definition.md + 4 element pattern files
-4. Add entry to this registry
-5. Update detection algorithm (content_type mapping, keywords)
-6. Add arc-specific workflow in `phase-workflows/`
-7. Update SKILL.md
+3. Create 5 files:
+   - `arc-definition.md` -- metadata, elements, detection, translations, quality gates
+   - `{element1}-patterns.md` -- transformation patterns for element 1
+   - `{element2}-patterns.md` -- transformation patterns for element 2
+   - `{element3}-patterns.md` -- transformation patterns for element 3
+   - `{element4}-patterns.md` -- transformation patterns for element 4
+4. Add entry to this registry (both summary table and detailed section)
+5. Update detection algorithm:
+   - Add `content_type` mapping in Step 3
+   - Add keyword set and threshold in Step 4
+   - Add structural detection in Step 2 (if arc has unique file signatures)
+6. Add arc-specific workflow: `phase-workflows/phase-4b-synthesis-{arc-id}.md`
+7. Update `language-templates.md` with localized `##` headers (en/de)
+8. Update `techniques-overview.md` application matrix with new arc column
+9. Update `SKILL.md`:
+   - Increment arc count in Purpose section
+   - Add arc to Available Story Arcs table
+   - Add `arc_id` to Phase 3 valid values list
 
 ### Quality Standards for New Arcs
 
+**Structural:**
 - Total word target: 1,450-1,900 words
-- 4 elements (consistent with existing arcs)
-- Clear detection signals (content_type + keywords)
-- German translations for all elements
-- Transformation patterns documented
-- Example transformations provided
-- Quality gates defined
+- EXACTLY 4 elements (consistent with all arcs)
+- Each element has distinct purpose (no overlap)
+- Clear detection signals (content_type + keywords + optional structural)
+
+**Content:**
+- arc-definition.md includes: metadata, TIPS mapping (if applicable), word targets, detection config, element definitions, narrative flow, citation requirements, quality gates, common pitfalls, language variations
+- Each pattern file includes: element purpose, source content mapping, transformation patterns (3-5), techniques checklist, quality checkpoints, common mistakes with good/bad examples, language variations
+- Phase-4b workflow includes: evidence loading, output template, extended thinking sub-steps, validation gates
+
+**Localization:**
+- German translations for all element headers
+- German header text added to `language-templates.md`
+- German examples in pattern files
+- Umlaut rules enforced (no ASCII fallbacks in body text)
+
+**Cross-references:**
+- Technique application matrix updated in `techniques-overview.md`
+- Arc registry quick reference table updated
+- SKILL.md arc table updated
+- Pattern files cross-reference related patterns in other elements

@@ -398,6 +398,15 @@ Exact `##` section headers for insight-summary.md output, per arc and language. 
 | 3 | Strategies: Adaptive Approaches | Strategien: Adaptive Ansätze |
 | 4 | Decisions: Action Framework | Entscheidungen: Handlungsrahmen |
 
+**trend-panorama:**
+
+| Element | English (en) | German (de) | TIPS Dimension |
+|---------|--------------|-------------|----------------|
+| 1 | Forces: External Pressures & Market Signals | Kräfte: Externe Einflüsse & Marktsignale | T (Externe Effekte) |
+| 2 | Impact: Value Chain Disruption | Wirkung: Wertschöpfungsdynamik | I (Digitale Wertetreiber) |
+| 3 | Horizons: Strategic Possibilities | Horizonte: Strategische Möglichkeiten | P (Neue Horizonte) |
+| 4 | Foundations: Capability Requirements | Fundamente: Kompetenzanforderungen | S (Digitales Fundament) |
+
 ## German Text Formatting
 
 When generating content in German (`language: "de"`):
