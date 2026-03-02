@@ -1,6 +1,6 @@
 # Narrative Transformation Plugin
 
-A story arc-driven narrative plugin primarily designed for [Cowork](https://claude.com/product/cowork), Anthropic's agentic desktop application — though it also works in Claude Code. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks and 8 narrative techniques.
+A story arc-driven narrative plugin primarily designed for [Cowork](https://claude.com/product/cowork), Anthropic's agentic desktop application — though it also works in Claude Code. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 6 story arc frameworks and 8 narrative techniques.
 
 > **Important**: This plugin generates executive narratives from structured input. All outputs should be reviewed for accuracy and tone before use in executive presentations, board materials, or external communications.
 
@@ -42,6 +42,7 @@ claude plugins add cogni-work/cogni-narrative
 | `competitive-intelligence` | Landscape → Shifts → Positioning → Implications | Competitive analysis, market monitoring, threat assessment |
 | `strategic-foresight` | Signals → Scenarios → Strategies → Decisions | Long-range planning, scenario analysis, strategic options |
 | `industry-transformation` | Forces → Friction → Evolution → Leadership | Industry analysis, regulatory impact, transformation roadmaps |
+| `trend-panorama` | Forces → Impact → Horizons → Foundations | Trend-scout output, TIPS trend reports, multi-horizon trend landscapes |
 
 ## Example Workflows
 
