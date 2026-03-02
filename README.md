@@ -14,19 +14,24 @@ claude plugins add cogni-work/cogni-narrative
 
 | Command | Description |
 |---------|-------------|
-| `/narrative` | Narrative transformation — transform research syntheses, analyses, and structured markdown into an executive narrative using a story arc framework |
+| `/narrative` | Transform research syntheses, analyses, and structured markdown into an executive narrative using a story arc framework |
+| `/narrative-review` | Score and review a narrative file against story arc quality gates — produces a scorecard with pass/warn/fail per gate and improvement suggestions |
+| `/narrative-adapt` | Transform a narrative into derivative formats: executive brief (300-500 words), talking points (bullet list), or one-pager (structured reference) |
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
 | `narrative` | Story arc selection, narrative transformation methodology, 8 narrative techniques (Pyramid Principle, PSB, Number Plays, etc.), quality validation, and bilingual output (EN/DE) |
+| `narrative-review` | Quality gate evaluation — scores narratives on structural compliance, word counts, citations, element balance, and language correctness (0-100 with A-F grades) |
+| `narrative-adapt` | Format adaptation — condenses full narratives into executive briefs, talking points, or one-pagers while preserving arc structure and key evidence |
 
 ## Agents
 
 | Agent | Description |
 |-------|-------------|
 | `narrative-writer` | Delegation wrapper for autonomous narrative generation — receives parameters and invokes the narrative skill, enabling parallel batch processing |
+| `narrative-reviewer` | Proactive quality reviewer — triggers after narrative generation to score output against quality gates and present a scorecard |
 
 ## Story Arc Frameworks
 
@@ -56,6 +61,18 @@ claude plugins add cogni-work/cogni-narrative
 
 1. Run `/narrative ./research-output/ --lang de` to generate a narrative in German
 2. Output uses proper Unicode umlauts and localized section headers throughout
+
+### Review Narrative Quality
+
+1. Run `/narrative-review ./insight-summary.md` to score an existing narrative
+2. Receive a scorecard with per-gate results (Structural, Critical, Evidence, Structure, Language)
+3. Review the top 3 improvement suggestions
+
+### Adapt to Derivative Formats
+
+1. Run `/narrative-adapt ./insight-summary.md --format executive-brief` for a 300-500 word condensed version
+2. Run `/narrative-adapt ./insight-summary.md --format talking-points` for a bullet-point briefing
+3. Run `/narrative-adapt ./insight-summary.md --format one-pager` for a structured reference page
 
 ## MCP Integration
 

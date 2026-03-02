@@ -1,14 +1,25 @@
 {
   "name": "cogni-narrative",
-  "version": "1.4.3",
-  "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks.",
+  "version": "1.5.0",
+  "description": "Story arc-driven narrative transformation for structured input files. Transforms research syntheses, analyses, and structured content into compelling executive narratives using 5 story arc frameworks. Includes narrative review scoring and derivative format adaptation.",
   "author": {
     "name": "Stephan de Haas",
     "email": "stephan@cogni-work.ai"
   },
   "license": "CC-BY-NC-SA-4.0",
-  "keywords": ["narrative", "story-arc", "synthesis", "executive-writing", "corporate-visions", "strategic-foresight"],
-  "skills": ["./skills/narrative"],
-  "agents": ["./agents/narrative-writer.md"],
-  "commands": ["./commands/narrative.md"]
+  "keywords": ["narrative", "story-arc", "synthesis", "executive-writing", "corporate-visions", "strategic-foresight", "review", "adapt"],
+  "skills": [
+    "./skills/narrative",
+    "./skills/narrative-review",
+    "./skills/narrative-adapt"
+  ],
+  "agents": [
+    "./agents/narrative-writer.md",
+    "./agents/narrative-reviewer.md"
+  ],
+  "commands": [
+    "./commands/narrative.md",
+    "./commands/narrative-review.md",
+    "./commands/narrative-adapt.md"
+  ]
 }
