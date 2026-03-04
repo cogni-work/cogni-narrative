@@ -86,10 +86,22 @@ For each arc element:
 
 ### Common Pitfalls
 
-- Cutting all evidence and leaving only assertions (too abstract)
-- Keeping too much text from one element, starving others
-- Losing the arc's rhetorical progression (each element must still lead to the next)
-- Dropping the hook entirely (brief still needs an opening frame)
+- **All assertion, no evidence:** Cutting every number and leaving only generic claims. Readers skim for quantitative anchors -- a brief without numbers reads like opinion.
+- **Uneven distribution:** Spending 150 words on Element 1 and 30 on Element 4. Each element carries part of the arc's argument; starving one weakens the whole progression.
+- **Broken rhetorical flow:** Each element should still feel like it leads to the next. If you remove the transitions entirely, the brief reads as 4 disconnected paragraphs instead of a compressed argument.
+- **Missing hook:** The brief still needs an opening frame. Two sentences is enough -- but zero sentences leaves the reader without context.
+- **Citation drift:** Keeping a citation but rewording the claim it supports changes the meaning. If the source says "EUR 47B by 2028" and the brief says "nearly EUR 50B," the citation no longer supports the claim.
+
+### Condensation Example
+
+**Source (Element 2, ~400 words):**
+> The convergence of regulatory pressure and accelerating market demand has created a narrow window of opportunity. European Commission directives now mandate comprehensive ESG reporting for enterprises with more than 250 employees<sup>[7](regulations.md)</sup>, while consumer preference data shows 73% of B2B buyers actively evaluating sustainability credentials<sup>[8](market-trends.md)</sup>. Organizations that delay risk...
+> [continues with examples, case studies, extended analysis]
+
+**Condensed (Element 2, ~80 words):**
+> EU regulatory mandates now require ESG reporting for enterprises above 250 employees<sup>[4](regulations.md)</sup>, while 73% of B2B buyers actively evaluate sustainability credentials<sup>[5](market-trends.md)</sup>. This convergence creates a 12-18 month first-mover window. Organizations that move now can establish market positioning before compliance deadlines force reactive adoption, while those that delay face both regulatory penalties and competitive disadvantage.
+
+Note: the core claim, two strongest evidence points, and the transition to Element 3 survive. Extended examples and case studies were cut.
 
 ---
 
@@ -167,9 +179,10 @@ date_created: "{ISO 8601}"
 
 **Core message bullets:**
 - Start with the insight, not the background
-- One sentence, 15-25 words
+- One sentence, **maximum 25 words** -- this is a hard limit. If a bullet runs longer, split it into two bullets or cut subordinate clauses. Bullets are for scanning, not reading.
 - Active voice, direct
-- Example: "Digital transformation spending will exceed $3.4 trillion by 2026, yet 70% of initiatives fail to meet objectives."
+- Example (24 words): "Digital transformation spending will exceed $3.4 trillion by 2026, yet 70% of initiatives fail to meet objectives."
+- Too long (31 words): "European mid-market manufacturers with EUR 50M-500M revenue combine the resources to invest with the agility to deploy quickly, unlike large enterprises or small firms." → Split into core claim + evidence bullet.
 
 **Evidence bullets:**
 - Lead with the number
@@ -189,6 +202,14 @@ Select the single most impactful statistic from each element. Criteria:
 2. **Specific** -- exact number, not "many" or "significant"
 3. **Relevant** -- directly supports the element's core message
 4. **Memorable** -- easy to quote in conversation
+
+### Common Pitfalls
+
+- **Prose disguised as bullets:** Writing full paragraphs with a dash in front. Bullets should be scannable at a glance -- if a bullet needs more than 25 words, it's not a bullet.
+- **Generic lead bullets:** "This section discusses..." or "The analysis shows..." are filler. Lead with the insight: "Digital transformation ROI averages 3.2x within 12 months."
+- **Missing the answer-first pattern:** Each element's first bullet is the takeaway, not the setup. The audience will hear these in order -- give them the conclusion first, then the evidence.
+- **Key Numbers that aren't numbers:** "Significant growth" or "Major improvement" in the Key Numbers section defeats its purpose. Every entry should be a specific, quotable figure.
+- **Accidental citations:** Talking points are for verbal delivery -- inline citation markers (`<sup>[N]...</sup>`) break the flow. Source attribution goes in parentheses after the stat: "(McKinsey 2024)".
 
 ---
 
@@ -260,7 +281,7 @@ date_created: "{ISO 8601}"
 
 ### Layout Constraints
 
-Designed for a single printed page (approximately 400-600 words with table and formatting).
+Designed for a single printed page (approximately 400-600 words with table and formatting). The 400-word minimum matters -- a one-pager that's too short looks sparse on paper and fails to convey enough substance for a standalone reference document. If you're under 400 words after drafting, expand each element section to its full 3-sentence allowance (What + How much + So what) rather than adding new sections.
 
 ### Key Metrics Table
 
@@ -282,10 +303,11 @@ Designed for a single printed page (approximately 400-600 words with table and f
 
 ### Section Writing
 
-Each element section: exactly 2-3 sentences.
+Each element section: exactly 2-3 sentences. Prefer 3 sentences to ensure the one-pager reaches its 400-word minimum -- the third sentence (implication) adds the "so what" that makes findings actionable.
+
 - Sentence 1: Core finding (what)
 - Sentence 2: Key evidence (how much / how fast)
-- Sentence 3 (optional): Implication (so what)
+- Sentence 3: Implication (so what) -- include this for all 4 elements unless word count is already at the upper bound
 
 ### Next Steps
 
@@ -300,3 +322,11 @@ Always include source attribution:
 ```
 *Source: {filename} | Arc: {Arc Display Name} | Generated: {YYYY-MM-DD}*
 ```
+
+### Common Pitfalls
+
+- **Metrics table with vague values:** "Large market" or "Fast growth" in the Value column. Each row needs a specific number with a unit (EUR 47B, 6-8 months, 3.2x ROI).
+- **Overloaded sections:** Each element section is exactly 2-3 sentences. Going to 4-5 sentences breaks the one-page layout and defeats the purpose of a quick-reference format.
+- **Next Steps that are too abstract:** "Consider digital transformation" is not actionable. Each step should specify what to do, at what scope, and ideally by when: "Pilot the monitoring approach in Q3 with 2 business units."
+- **Missing progressive scoping in Next Steps:** The 3 action items should escalate: (1) quick win, (2) medium effort, (3) strategic investment. Three items at the same ambition level don't help the reader prioritize.
+- **Inline citations:** The one-pager is designed for clean print layout. Citations clutter the page -- traceability is handled by the footer's source attribution instead.
