@@ -74,8 +74,11 @@ On success, the skill returns:
   "success": true,
   "output_path": "path/to/insight-summary.md",
   "arc_id": "corporate-visions",
+  "arc_display_name": "Corporate Visions",
   "word_count": 1650,
-  "citation_count": 22
+  "citation_count": 22,
+  "elements": 4,
+  "language": "en"
 }
 ```
 

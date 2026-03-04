@@ -325,4 +325,5 @@ On any unrecoverable failure, return error JSON:
 | `references/story-arc/{arc_id}/arc-definition.md` | Element definitions, word targets, quality gates | Phase 3 |
 | `references/narrative-techniques/techniques-overview.md` | 8 narrative techniques with arc application matrix | Phase 3 |
 | `references/phase-workflows/phase-4b-synthesis-{arc_id}.md` | Arc-specific transformation workflow | Phase 4 |
+| `references/phase-workflows/shared-steps.md` | Entity counting, output template, validation, write steps | Phase 4 (via phase-4b) |
 | `references/language-templates.md` | Localized headers for en/de | Phase 4 (if `de`) |
