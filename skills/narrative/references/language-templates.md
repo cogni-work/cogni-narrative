@@ -6,8 +6,9 @@ Localized header strings for entity generation across the 12-stage entity pipeli
 
 1. If `--language` provided: Validate ISO 639-1 format (2-letter lowercase), must be `en` or `de`
 2. If not provided: Detect from project metadata (`.metadata/project-config.json`)
-3. Fallback: Sample 3 source files for majority language
-4. Default: `en`
+3. Workspace preference: Read `.workspace-config.json` language field (via `${PROJECT_AGENTS_OPS_ROOT}/.workspace-config.json` or CWD)
+4. Fallback: Sample 3 source files for majority language
+5. Default: `en`
 
 ## Supported Languages
 

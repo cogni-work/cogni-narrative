@@ -25,7 +25,7 @@ Transform input markdown files into a structured executive narrative (1,450-1,90
 |-----------|----------|-------------|
 | `--source-path` | Yes | Directory containing input `.md` files, or path to a single `.md` file |
 | `--arc-id` | No | Explicit arc selection; overrides auto-detection |
-| `--language` | No | Output language: `en` (default) or `de` |
+| `--language` | No | Output language: `en` (default) or `de`. Fallback chain: explicit parameter > project metadata > workspace preference (`.workspace-config.json`) > content detection > `en` |
 | `--output-path` | No | Output file path; defaults to `insight-summary.md` in source directory |
 | `--project-path` | No | Research project directory; enables loading entity data beyond source path |
 | `--research-question` | No | Original research question for narrative hook framing |
