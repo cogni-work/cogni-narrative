@@ -90,3 +90,26 @@ Connect a research plugin (e.g., cogni-research) to generate structured synthese
 Connect a presentation plugin (e.g., cogni-visual) to transform narratives into slides, poster storyboards, or visual journey maps.
 
 > **Note:** Without upstream research plugins, you can provide any structured markdown files as input for narrative transformation.
+
+## Architecture
+
+```
+cogni-narrative/
+├── .claude-plugin/plugin.json    Plugin manifest
+├── skills/                       3 narrative skills
+│   ├── narrative/
+│   ├── narrative-review/
+│   └── narrative-adapt/
+├── agents/                       3 delegation agents
+│   ├── narrative-writer.md
+│   ├── narrative-reviewer.md
+│   └── narrative-adapter.md
+└── commands/                     3 slash commands
+    ├── narrative.md
+    ├── narrative-review.md
+    └── narrative-adapt.md
+```
+
+## License
+
+[AGPL-3.0](LICENSE)
