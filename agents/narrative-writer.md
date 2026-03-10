@@ -1,6 +1,6 @@
 ---
 name: narrative-writer
-description: "Delegation wrapper agent for cogni-narrative:narrative skill. Receives parameters, invokes the skill, and returns its output. Does NOT generate narrative content directly."
+description: "Transform structured content into executive narratives via the narrative skill. Enables parallel narrative generation across multiple content sets as an autonomous subprocess."
 model: sonnet
 color: magenta
 whenToUse: |

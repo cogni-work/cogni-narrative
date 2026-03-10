@@ -1,6 +1,6 @@
 ---
 name: narrative-adapter
-description: "Delegation wrapper agent for cogni-narrative:narrative-adapt skill. Receives parameters, invokes the skill, and returns its output. Does NOT generate derivative content directly."
+description: "Adapt narratives into derivative formats — executive briefs, talking points, or one-pagers. Enables parallel adaptation across multiple narratives as an autonomous subprocess."
 model: sonnet
 color: yellow
 whenToUse: |

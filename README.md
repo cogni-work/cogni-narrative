@@ -30,7 +30,7 @@ claude plugins add cogni-work/cogni-narrative
 
 | Agent | Description |
 |-------|-------------|
-| `narrative-writer` | Delegation wrapper for autonomous narrative generation — receives parameters and invokes the narrative skill, enabling parallel batch processing |
+| `narrative-writer` | Transform structured content into executive narratives — enables parallel narrative generation across multiple content sets |
 | `narrative-reviewer` | Proactive quality reviewer — triggers after narrative generation to score output against quality gates and present a scorecard |
 
 ## Story Arc Frameworks
